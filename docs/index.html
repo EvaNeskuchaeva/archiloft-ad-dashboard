@@ -582,6 +582,1568 @@ tr:last-child td {
       </nav>
       <section class="side-panel">
         <span class="side-panel__label">Период</span>
+        <strong id="periodLabel">Апрель - 8 июля 2026</strong>
+      </section>
+      <section class="side-panel side-panel--accent">
+        <span class="side-panel__label">Источник</span>
+        <strong>Promo Group</strong>
+        <span>Яндекс Директ / CPC</span>
+      </section>
+    </aside>
+
+    <main class="app">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">ArchiLoft · реклама</p>
+          <h1>Дашборд рекламы и сравнений</h1>
+          <p class="subtitle">Promo Group / CPC: расход, сделки, деньги и динамика май-июнь.</p>
+        </div>
+        <div class="controls" aria-label="Фильтры">
+          <label class="control">
+            <span>Период</span>
+            <select id="periodFilter">
+              <option value="all">Апрель - 8 июля</option>
+              <option value="may">Май</option>
+              <option value="june">Июнь</option>
+              <option value="july">Июль 01-08</option>
+            </select>
+          </label>
+          <label class="control control--number">
+            <span>Расход всего, ₽</span>
+            <input id="totalSpendInput" type="number" min="0" step="1" />
+          </label>
+          <button id="saveButton" class="button button--primary" type="button">Сохранить</button>
+          <button id="resetButton" class="button" type="button">Сбросить</button>
+        </div>
+      </header>
+
+      <section id="overview" class="kpi-grid" aria-label="Ключевые показатели">
+        <article class="kpi">
+          <span class="kpi__label">Потратили Promo Group</span>
+          <strong id="kpiSpend">0 ₽</strong>
+          <small id="kpiSpendMeta"></small>
+        </article>
+        <article class="kpi kpi--warning">
+          <span class="kpi__label">Заработали по факту</span>
+          <strong id="kpiActualRevenue">0 ₽</strong>
+          <small id="kpiActualMeta"></small>
+        </article>
+        <article class="kpi">
+          <span class="kpi__label">Потенциал CRM</span>
+          <strong id="kpiCrmBudget">0 ₽</strong>
+          <small id="kpiCrmMeta"></small>
+        </article>
+        <article class="kpi">
+          <span class="kpi__label">ROMI потенциал</span>
+          <strong id="kpiRomi">0%</strong>
+          <small id="kpiRomiMeta"></small>
+        </article>
+        <article class="kpi">
+          <span class="kpi__label">Лиды / сделки</span>
+          <strong id="kpiLeadsDeals">0 / 0</strong>
+          <small id="kpiLeadMeta"></small>
+        </article>
+        <article class="kpi">
+          <span class="kpi__label">В работе / закрыто</span>
+          <strong id="kpiStages">0 / 0</strong>
+          <small id="kpiStageMeta"></small>
+        </article>
+      </section>
+
+      <section class="grid grid--charts">
+        <article id="compare" class="panel panel--wide">
+          <div class="panel__header">
+            <div>
+              <h2>Май против июня</h2>
+              <p>Динамика по рекламному источнику Promo Group.</p>
+            </div>
+            <span id="compareBadge" class="badge">CPC</span>
+          </div>
+          <div id="comparisonChart" class="chart chart--large" role="img" aria-label="Сравнение рекламных показателей"></div>
+        </article>
+
+        <article id="funnel" class="panel">
+          <div class="panel__header">
+            <div>
+              <h2>Воронка рекламы</h2>
+              <p>От лида до реализации.</p>
+            </div>
+          </div>
+          <div id="funnelChart" class="funnel" role="img" aria-label="Воронка рекламных лидов"></div>
+        </article>
+      </section>
+
+      <section class="grid grid--tables">
+        <article class="panel">
+          <div class="panel__header">
+            <div>
+              <h2>Сухой остаток</h2>
+              <p>Факт и потенциал по рекламе.</p>
+            </div>
+          </div>
+          <div id="summaryList" class="summary-list"></div>
+        </article>
+
+        <article class="panel panel--wide">
+          <div class="panel__header">
+            <div>
+              <h2>Сравнение показателей</h2>
+              <p>Только рекламные метрики, без лишних CRM-столбцов.</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table class="compare-table">
+              <thead>
+                <tr>
+                  <th>Показатель</th>
+                  <th>Май</th>
+                  <th>Июнь</th>
+                  <th>Разница</th>
+                  <th>Итог</th>
+                </tr>
+              </thead>
+              <tbody id="comparisonTable"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section id="weeks" class="panel panel--weeks">
+        <div class="panel__header">
+          <div>
+            <h2>Разбивка рекламы по неделям</h2>
+            <p>Расход CPC, CRM-лиды и потенциальный бюджет из недельной таблицы.</p>
+          </div>
+          <span id="weeklyBadge" class="badge">10 недель</span>
+        </div>
+        <div class="weekly-layout">
+          <div>
+            <div id="weeklySummary" class="weekly-summary"></div>
+            <div id="weeklyChart" class="chart chart--weekly" role="img" aria-label="Недельная динамика рекламы"></div>
+          </div>
+          <div class="table-wrap">
+            <table class="weekly-table">
+              <thead>
+                <tr>
+                  <th>Неделя</th>
+                  <th>Расход CPC</th>
+                  <th>CRM-лиды</th>
+                  <th>Бюджет CRM</th>
+                  <th>Цена лида</th>
+                  <th>Факт</th>
+                </tr>
+              </thead>
+              <tbody id="weeklyTable"></tbody>
+            </table>
+          </div>
+        </div>
+        <p id="weeklyNote" class="source-note"></p>
+      </section>
+
+      <section id="data" class="panel panel--data">
+        <div class="panel__header">
+          <div>
+            <h2>Ввод рекламных данных</h2>
+            <p>Изменения сразу пересчитывают KPI, графики и сравнение.</p>
+          </div>
+          <button id="addMonthButton" class="button" type="button">Добавить месяц</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Месяц</th>
+                <th>Расход</th>
+                <th>Лиды</th>
+                <th>Сделки</th>
+                <th>Квал.</th>
+                <th>В работе</th>
+                <th>Закрыто</th>
+                <th>КП</th>
+                <th>Реализовано</th>
+                <th>Факт оплат</th>
+                <th>Потенциал CRM</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="dataTable"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script>
+window.ARCHILOFT_AD_DATA = {
+  brand: "ARCHILOFT",
+  reportTitle: "Дашборд рекламы и сравнений",
+  sourceNote: "Данные обновлены по текущему отчету за период апрель - 8 июля 2026. В дашборде оставлены только реклама Promo Group / CPC и сравнение.",
+  allPeriodLabel: "Апрель - 8 июля",
+  promoSpendTotal: 483685.92,
+  promoSpendLabel: "апрель - 8 июля 2026",
+  promoSpendMeta: "Апр-июн: 465 000 ₽; июль 01-08: 18 686 ₽",
+  promoSpendMayJune: 310000,
+  promoSpendBeforeMay: 155000,
+  weeklySourceNote: "Недельная разбивка обновлена из таблицы «Реклама по неделям» файла «К СОВЕЩАНИЮ ГОТОВЫЙ 1.xlsx». Расход здесь указан как CPC по неделям.",
+  weeks: [
+    {
+      week: "01.05–08.05",
+      spend: 35001,
+      leads: 0,
+      crmBudget: 0,
+      realized: 0,
+      actualRevenue: 0,
+      cpl: 0
+    },
+    {
+      week: "08.05–15.05",
+      spend: 17270.49,
+      leads: 0,
+      crmBudget: 0,
+      realized: 0,
+      actualRevenue: 0,
+      cpl: 0
+    },
+    {
+      week: "15.05–22.05",
+      spend: 30919.17,
+      leads: 3,
+      crmBudget: 440000,
+      realized: 0,
+      actualRevenue: 0,
+      cpl: 10306.39
+    },
+    {
+      week: "22.05–29.05",
+      spend: 30041.47,
+      leads: 6,
+      crmBudget: 400000,
+      realized: 0,
+      actualRevenue: 0,
+      cpl: 5006.91
+    },
+    {
+      week: "29.05–05.06",
+      spend: 27313.21,
+      leads: 7,
+      crmBudget: 100000,
+      realized: 0,
+      actualRevenue: 0,
+      cpl: 3901.89
+    },
+    {
+      week: "05.06–12.06",
+      spend: 16977.34,
+      leads: 6,
+      crmBudget: 1300000,
+      realized: 0,
+      actualRevenue: 0,
+      cpl: 2829.56
+    },
+    {
+      week: "12.06–19.06",
+      spend: 23188,
+      leads: 8,
+      crmBudget: 1470000,
+      realized: 0,
+      actualRevenue: 0,
+      cpl: 2898.5
+    },
+    {
+      week: "19.06–26.06",
+      spend: 13551.63,
+      leads: 2,
+      crmBudget: 190000,
+      realized: 0,
+      actualRevenue: 0,
+      cpl: 6775.82
+    },
+    {
+      week: "26.06–03.07",
+      spend: 13296.97,
+      leads: 4,
+      crmBudget: 830000,
+      realized: 0,
+      actualRevenue: 0,
+      cpl: 3324.24
+    },
+    {
+      week: "01.07–08.07",
+      spend: 18685.92,
+      leads: 4,
+      crmBudget: 640000,
+      realized: 0,
+      actualRevenue: 0,
+      cpl: 4671.48
+    }
+  ],
+  months: [
+    {
+      id: "may",
+      month: "Май",
+      source: "Яндекс Директ / CPC",
+      provider: "Promo Group",
+      touchpoints: "Mango / звонок 7, Tilda / форма сайта 3, Ручной ввод CRM 1",
+      spend: 155000,
+      leads: 12,
+      deals: 12,
+      qualified: 12,
+      inWork: 0,
+      closed: 12,
+      calls: 8,
+      offers: 0,
+      realized: 0,
+      actualRevenue: 0,
+      ctRevenue: 0,
+      crmBudget: 1240000
+    },
+    {
+      id: "june",
+      month: "Июнь",
+      source: "Яндекс Директ / CPC",
+      provider: "Promo Group",
+      touchpoints: "Mango / звонок 10, Tilda / форма сайта 5",
+      spend: 155000,
+      leads: 22,
+      deals: 22,
+      qualified: 22,
+      inWork: 5,
+      closed: 17,
+      calls: 10,
+      offers: 5,
+      realized: 0,
+      actualRevenue: 0,
+      ctRevenue: 0,
+      crmBudget: 4190000
+    },
+    {
+      id: "july",
+      month: "Июль 01-08",
+      source: "Яндекс Директ / CPC",
+      provider: "Promo Group",
+      touchpoints: "Calltouch / CPC 01-08 июля",
+      spend: 18685.92,
+      leads: 4,
+      deals: 4,
+      qualified: 4,
+      inWork: 3,
+      closed: 1,
+      calls: 0,
+      offers: 2,
+      realized: 0,
+      actualRevenue: 400000,
+      ctRevenue: 400000,
+      crmBudget: 640000
+    }
+  ]
+};
+
+    </script>
+    <script>
+(function () {
+  const STORAGE_KEY = "archiloft-ad-dashboard-v2";
+  const baseData = window.ARCHILOFT_AD_DATA;
+  const editableFields = [
+    ["month", "text"],
+    ["spend", "number"],
+    ["leads", "number"],
+    ["deals", "number"],
+    ["qualified", "number"],
+    ["inWork", "number"],
+    ["closed", "number"],
+    ["offers", "number"],
+    ["realized", "number"],
+    ["actualRevenue", "number"],
+    ["crmBudget", "number"]
+  ];
+
+  let state = loadState();
+
+  const els = {
+    periodFilter: document.getElementById("periodFilter"),
+    totalSpendInput: document.getElementById("totalSpendInput"),
+    saveButton: document.getElementById("saveButton"),
+    resetButton: document.getElementById("resetButton"),
+    addMonthButton: document.getElementById("addMonthButton"),
+    periodLabel: document.getElementById("periodLabel"),
+    kpiSpend: document.getElementById("kpiSpend"),
+    kpiSpendMeta: document.getElementById("kpiSpendMeta"),
+    kpiActualRevenue: document.getElementById("kpiActualRevenue"),
+    kpiActualMeta: document.getElementById("kpiActualMeta"),
+    kpiCrmBudget: document.getElementById("kpiCrmBudget"),
+    kpiCrmMeta: document.getElementById("kpiCrmMeta"),
+    kpiRomi: document.getElementById("kpiRomi"),
+    kpiRomiMeta: document.getElementById("kpiRomiMeta"),
+    kpiLeadsDeals: document.getElementById("kpiLeadsDeals"),
+    kpiLeadMeta: document.getElementById("kpiLeadMeta"),
+    kpiStages: document.getElementById("kpiStages"),
+    kpiStageMeta: document.getElementById("kpiStageMeta"),
+    comparisonChart: document.getElementById("comparisonChart"),
+    funnelChart: document.getElementById("funnelChart"),
+    weeklyChart: document.getElementById("weeklyChart"),
+    weeklySummary: document.getElementById("weeklySummary"),
+    weeklyTable: document.getElementById("weeklyTable"),
+    weeklyBadge: document.getElementById("weeklyBadge"),
+    weeklyNote: document.getElementById("weeklyNote"),
+    comparisonTable: document.getElementById("comparisonTable"),
+    dataTable: document.getElementById("dataTable"),
+    summaryList: document.getElementById("summaryList"),
+    compareBadge: document.getElementById("compareBadge")
+  };
+
+  function loadState() {
+    const fallback = {
+      promoSpendTotal: baseData.promoSpendTotal,
+      months: baseData.months.map((item) => ({ ...item }))
+    };
+
+    try {
+      const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+      if (!stored || !Array.isArray(stored.months)) return fallback;
+      return {
+        promoSpendTotal: Number(stored.promoSpendTotal) || baseData.promoSpendTotal,
+        months: stored.months.map((item) => normalizeMonth(item))
+      };
+    } catch (error) {
+      return fallback;
+    }
+  }
+
+  function normalizeMonth(item) {
+    const normalized = { ...item };
+    editableFields.forEach(([field, type]) => {
+      if (type === "number") normalized[field] = Number(normalized[field]) || 0;
+      if (type === "text") normalized[field] = String(normalized[field] || "");
+    });
+    normalized.id = normalized.id || slugify(normalized.month || `month-${Date.now()}`);
+    normalized.source = normalized.source || "Яндекс Директ / CPC";
+    normalized.provider = normalized.provider || "Promo Group";
+    normalized.touchpoints = normalized.touchpoints || "";
+    normalized.ctRevenue = Number(normalized.ctRevenue) || Number(normalized.crmBudget) || 0;
+    return normalized;
+  }
+
+  function slugify(value) {
+    return String(value)
+      .trim()
+      .toLowerCase()
+      .replace(/\s+/g, "-")
+      .replace(/[^a-zа-я0-9-]/gi, "");
+  }
+
+  function saveState() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  function selectedMonths() {
+    const selected = els.periodFilter.value;
+      if (selected === "all") return state.months;
+    return state.months.filter((item) => item.id === selected);
+  }
+
+  function totals(rows) {
+    return rows.reduce(
+      (acc, row) => {
+        acc.spend += Number(row.spend) || 0;
+        acc.leads += Number(row.leads) || 0;
+        acc.deals += Number(row.deals) || 0;
+        acc.qualified += Number(row.qualified) || 0;
+        acc.inWork += Number(row.inWork) || 0;
+        acc.closed += Number(row.closed) || 0;
+        acc.offers += Number(row.offers) || 0;
+        acc.realized += Number(row.realized) || 0;
+        acc.actualRevenue += Number(row.actualRevenue) || 0;
+        acc.crmBudget += Number(row.crmBudget) || 0;
+        acc.ctRevenue += Number(row.ctRevenue) || 0;
+        return acc;
+      },
+      {
+        spend: 0,
+        leads: 0,
+        deals: 0,
+        qualified: 0,
+        inWork: 0,
+        closed: 0,
+        offers: 0,
+        realized: 0,
+        actualRevenue: 0,
+        crmBudget: 0,
+        ctRevenue: 0
+      }
+    );
+  }
+
+  function spendBase(rows) {
+    return els.periodFilter.value === "all" ? Number(state.promoSpendTotal) || 0 : totals(rows).spend;
+  }
+
+  function money(value) {
+    return `${Math.round(Number(value) || 0).toLocaleString("ru-RU")} ₽`;
+  }
+
+  function number(value) {
+    return Math.round(Number(value) || 0).toLocaleString("ru-RU");
+  }
+
+  function percent(value, digits = 0) {
+    if (!Number.isFinite(value)) return "0%";
+    return `${value.toLocaleString("ru-RU", { maximumFractionDigits: digits, minimumFractionDigits: digits })}%`;
+  }
+
+  function safeRate(numerator, denominator) {
+    if (!denominator) return 0;
+    return (numerator / denominator) * 100;
+  }
+
+  function romi(revenue, spend) {
+    if (!spend) return 0;
+    return ((revenue - spend) / spend) * 100;
+  }
+
+  function render(options = {}) {
+    const shouldRenderDataTable = options.dataTable !== false;
+    const rows = selectedMonths();
+    const total = totals(rows);
+    const spend = spendBase(rows);
+    const selectedLabel = els.periodFilter.options[els.periodFilter.selectedIndex].textContent;
+    const potentialRomi = romi(total.crmBudget, spend);
+    const actualRomi = romi(total.actualRevenue, spend);
+    const cpl = total.leads ? spend / total.leads : 0;
+
+    els.periodLabel.textContent = selectedLabel;
+    els.totalSpendInput.value = Math.round(state.promoSpendTotal);
+    els.kpiSpend.textContent = money(spend);
+    els.kpiSpendMeta.textContent =
+      els.periodFilter.value === "all"
+        ? baseData.promoSpendMeta || `${money(state.promoSpendMayJune || baseData.promoSpendMayJune)} май-июнь; ${money(baseData.promoSpendBeforeMay)} до мая`
+        : `Расход выбранного периода`;
+    els.kpiActualRevenue.textContent = money(total.actualRevenue);
+    els.kpiActualMeta.textContent = `${number(total.realized)} реализовано · ROMI факт ${percent(actualRomi)}`;
+    els.kpiCrmBudget.textContent = money(total.crmBudget);
+    els.kpiCrmMeta.textContent = `Выручка CT: ${money(total.ctRevenue)}`;
+    els.kpiRomi.textContent = percent(potentialRomi);
+    els.kpiRomiMeta.textContent = `CPL: ${money(cpl)} · конверсия в сделку ${percent(safeRate(total.deals, total.leads))}`;
+    els.kpiLeadsDeals.textContent = `${number(total.leads)} / ${number(total.deals)}`;
+    els.kpiLeadMeta.textContent = `${number(total.qualified)} квалифицировано`;
+    els.kpiStages.textContent = `${number(total.inWork)} / ${number(total.closed)}`;
+    els.kpiStageMeta.textContent = `${number(total.offers)} КП · ${number(total.realized)} реализовано`;
+    els.compareBadge.textContent = rows.length === 1 ? rows[0].month : "май-июнь";
+
+    renderComparisonChart();
+    renderFunnel(total);
+    renderWeekly();
+    renderComparisonTable();
+    renderSummary(total, spend, potentialRomi, actualRomi);
+    if (shouldRenderDataTable) renderDataTable();
+    syncPeriodOptions();
+  }
+
+  function weeklyTotals() {
+    return (baseData.weeks || []).reduce(
+      (acc, row) => {
+        acc.spend += Number(row.spend) || 0;
+        acc.leads += Number(row.leads) || 0;
+        acc.crmBudget += Number(row.crmBudget) || 0;
+        acc.realized += Number(row.realized) || 0;
+        acc.actualRevenue += Number(row.actualRevenue) || 0;
+        return acc;
+      },
+      { spend: 0, leads: 0, crmBudget: 0, realized: 0, actualRevenue: 0 }
+    );
+  }
+
+  function renderComparisonChart() {
+    const rows = state.months.slice(0, 2);
+    const metrics = [
+      ["Расход", "spend", "money", false],
+      ["Лиды", "leads", "number", true],
+      ["Сделки", "deals", "number", true],
+      ["Квал.", "qualified", "number", true],
+      ["Закрыто", "closed", "number", true],
+      ["Потенциал", "crmBudget", "money", true]
+    ];
+    const width = 760;
+    const height = 294;
+    const left = 64;
+    const top = 24;
+    const rowH = 38;
+    const maxValue = Math.max(...metrics.flatMap(([, key]) => rows.map((row) => Number(row[key]) || 0)), 1);
+    const may = rows[0] || {};
+    const june = rows[1] || {};
+
+    const bars = metrics
+      .map(([label, key, format], index) => {
+        const y = top + index * rowH;
+        const mayValue = Number(may[key]) || 0;
+        const juneValue = Number(june[key]) || 0;
+        const mayW = Math.max(2, (mayValue / maxValue) * 520);
+        const juneW = Math.max(2, (juneValue / maxValue) * 520);
+        const delta = juneValue - mayValue;
+        const display = format === "money" ? money(delta) : number(delta);
+        const className = delta >= 0 ? "delta-up" : "delta-down";
+
+        return `
+          <g>
+            <text x="0" y="${y + 17}" class="svg-label">${label}</text>
+            <rect x="${left}" y="${y}" width="${mayW}" height="13" rx="4" fill="#c9c2ff"></rect>
+            <rect x="${left}" y="${y + 17}" width="${juneW}" height="13" rx="4" fill="#7567f8"></rect>
+            <text x="${left + Math.max(mayW, juneW) + 12}" y="${y + 24}" class="${className}">${display}</text>
+          </g>
+        `;
+      })
+      .join("");
+
+    els.comparisonChart.innerHTML = `
+      <svg viewBox="0 0 ${width} ${height}" aria-hidden="true">
+        <style>
+          .svg-label{font:600 12px Inter,Arial;fill:#697386}
+          .delta-up{font:700 12px Inter,Arial;fill:#15a875}
+          .delta-down{font:700 12px Inter,Arial;fill:#d84b5b}
+          .legend{font:600 12px Inter,Arial;fill:#697386}
+        </style>
+        <text x="${left}" y="278" class="legend">Май</text>
+        <rect x="${left + 34}" y="268" width="26" height="10" rx="3" fill="#c9c2ff"></rect>
+        <text x="${left + 78}" y="278" class="legend">Июнь</text>
+        <rect x="${left + 120}" y="268" width="26" height="10" rx="3" fill="#7567f8"></rect>
+        ${bars}
+      </svg>
+    `;
+  }
+
+  function renderFunnel(total) {
+    const stages = [
+      ["Лиды", total.leads],
+      ["Сделки CRM", total.deals],
+      ["Квал.", total.qualified],
+      ["В работе", total.inWork],
+      ["Закрыто", total.closed],
+      ["КП", total.offers],
+      ["Реализовано", total.realized]
+    ];
+    const width = 420;
+    const height = 300;
+    const maxValue = Math.max(...stages.map(([, value]) => value), 1);
+    const blocks = stages
+      .map(([label, value], index) => {
+        const barW = Math.max(4, (value / maxValue) * 245);
+        const y = 20 + index * 38;
+        const ratio = safeRate(value, maxValue);
+        const fill = index < 3 ? "#7567f8" : index < 5 ? "#2f80ed" : "#15a875";
+        return `
+          <g>
+            <text x="0" y="${y + 18}" class="funnel-label">${label}</text>
+            <rect x="118" y="${y}" width="${barW}" height="22" rx="5" fill="${fill}" opacity="${0.36 + ratio / 180}"></rect>
+            <text x="${380}" y="${y + 17}" text-anchor="end" class="funnel-value">${number(value)}</text>
+          </g>
+        `;
+      })
+      .join("");
+
+    els.funnelChart.innerHTML = `
+      <svg viewBox="0 0 ${width} ${height}" aria-hidden="true">
+        <style>
+          .funnel-label{font:600 12px Inter,Arial;fill:#697386}
+          .funnel-value{font:700 12px Inter,Arial;fill:#1e2430}
+        </style>
+        ${blocks}
+      </svg>
+    `;
+  }
+
+  function renderWeekly() {
+    const weeks = baseData.weeks || [];
+    const total = weeklyTotals();
+    const bestLeadWeek = weeks.reduce((best, row) => (Number(row.leads) > Number(best.leads || 0) ? row : best), {});
+    const cpl = total.leads ? total.spend / total.leads : 0;
+
+    if (els.weeklyBadge) els.weeklyBadge.textContent = `${weeks.length} недель`;
+    if (els.weeklyNote) els.weeklyNote.textContent = baseData.weeklySourceNote || "";
+    renderWeeklySummary(total, cpl, bestLeadWeek);
+    renderWeeklyChart(weeks);
+    renderWeeklyTable(weeks);
+  }
+
+  function renderWeeklySummary(total, cpl, bestLeadWeek) {
+    if (!els.weeklySummary) return;
+    const items = [
+      ["Расход CPC", money(total.spend)],
+      ["CRM-лиды", number(total.leads)],
+      ["Потенциал CRM", money(total.crmBudget)],
+      ["Средняя цена лида", money(cpl)]
+    ];
+    els.weeklySummary.innerHTML = items
+      .map(
+        ([label, value]) => `
+          <div class="weekly-stat">
+            <span>${label}</span>
+            <strong>${value}</strong>
+          </div>
+        `
+      )
+      .join("");
+
+    if (bestLeadWeek.week) {
+      els.weeklySummary.innerHTML += `
+        <div class="weekly-stat">
+          <span>Лучшая неделя по лидам</span>
+          <strong>${bestLeadWeek.week} · ${number(bestLeadWeek.leads)}</strong>
+        </div>
+      `;
+    }
+  }
+
+  function renderWeeklyChart(weeks) {
+    if (!els.weeklyChart) return;
+    const width = 820;
+    const height = 278;
+    const left = 42;
+    const bottom = 230;
+    const barGap = 12;
+    const barW = Math.max(20, (width - left - 34 - barGap * weeks.length) / Math.max(weeks.length, 1));
+    const maxSpend = Math.max(...weeks.map((row) => Number(row.spend) || 0), 1);
+    const maxLeads = Math.max(...weeks.map((row) => Number(row.leads) || 0), 1);
+    const points = [];
+
+    const bars = weeks
+      .map((row, index) => {
+        const x = left + index * (barW + barGap);
+        const spend = Number(row.spend) || 0;
+        const leads = Number(row.leads) || 0;
+        const h = Math.max(2, (spend / maxSpend) * 145);
+        const y = bottom - h;
+        const pointY = bottom - (leads / maxLeads) * 170;
+        points.push(`${x + barW / 2},${pointY}`);
+        return `
+          <g>
+            <rect x="${x}" y="${y}" width="${barW}" height="${h}" rx="5" fill="#c9c2ff"></rect>
+            <text x="${x + barW / 2}" y="${bottom + 18}" text-anchor="middle" class="week-label">${shortWeek(row.week)}</text>
+            <text x="${x + barW / 2}" y="${y - 6}" text-anchor="middle" class="week-money">${spend ? money(spend).replace(" ₽", "") : "0"}</text>
+          </g>
+        `;
+      })
+      .join("");
+
+    const dots = weeks
+      .map((row, index) => {
+        const x = left + index * (barW + barGap) + barW / 2;
+        const y = bottom - ((Number(row.leads) || 0) / maxLeads) * 170;
+        return `
+          <g>
+            <circle cx="${x}" cy="${y}" r="4.5" fill="#15a875"></circle>
+            <text x="${x}" y="${y - 10}" text-anchor="middle" class="week-leads">${number(row.leads)}</text>
+          </g>
+        `;
+      })
+      .join("");
+
+    els.weeklyChart.innerHTML = `
+      <svg viewBox="0 0 ${width} ${height}" aria-hidden="true">
+        <style>
+          .week-label{font:600 10px Inter,Arial;fill:#697386}
+          .week-money{font:600 10px Inter,Arial;fill:#697386}
+          .week-leads{font:700 11px Inter,Arial;fill:#15a875}
+          .week-legend{font:600 12px Inter,Arial;fill:#697386}
+        </style>
+        <line x1="${left - 10}" y1="${bottom}" x2="${width - 16}" y2="${bottom}" stroke="#e7eaf0"></line>
+        ${bars}
+        <polyline points="${points.join(" ")}" fill="none" stroke="#15a875" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>
+        ${dots}
+        <rect x="${left}" y="16" width="24" height="10" rx="3" fill="#c9c2ff"></rect>
+        <text x="${left + 34}" y="26" class="week-legend">Расход CPC, ₽</text>
+        <circle cx="${left + 155}" cy="21" r="5" fill="#15a875"></circle>
+        <text x="${left + 166}" y="26" class="week-legend">CRM-лиды</text>
+      </svg>
+    `;
+  }
+
+  function shortWeek(value) {
+    return String(value || "").replace("–", "-").replace(".05", ".05").replace(".06", ".06").replace(".07", ".07");
+  }
+
+  function renderWeeklyTable(weeks) {
+    if (!els.weeklyTable) return;
+    els.weeklyTable.innerHTML = weeks
+      .map((row) => {
+        const cplValue = Number(row.cpl) || (Number(row.leads) ? Number(row.spend) / Number(row.leads) : 0);
+        return `
+          <tr>
+            <td>${row.week}</td>
+            <td>${money(row.spend)}</td>
+            <td>${number(row.leads)}</td>
+            <td>${money(row.crmBudget)}</td>
+            <td>${cplValue ? money(cplValue) : "—"}</td>
+            <td>${money(row.actualRevenue)}</td>
+          </tr>
+        `;
+      })
+      .join("");
+  }
+
+  function renderComparisonTable() {
+    const may = state.months[0] || {};
+    const june = state.months[1] || {};
+    const rows = [
+      ["Расход", "spend", "money", false],
+      ["Лиды", "leads", "number", true],
+      ["Сделки CRM", "deals", "number", true],
+      ["Квалифицированные", "qualified", "number", true],
+      ["В работе", "inWork", "number", true],
+      ["Закрыто", "closed", "number", true],
+      ["КП", "offers", "number", true],
+      ["Реализовано", "realized", "number", true],
+      ["Факт оплат", "actualRevenue", "money", true],
+      ["Потенциал CRM", "crmBudget", "money", true]
+    ];
+
+    els.comparisonTable.innerHTML = rows
+      .map(([label, key, format, higherIsBetter]) => {
+        const mayValue = Number(may[key]) || 0;
+        const juneValue = Number(june[key]) || 0;
+        const delta = juneValue - mayValue;
+        const good = higherIsBetter ? delta >= 0 : delta <= 0;
+        const neutral = delta === 0;
+        const value = (input) => (format === "money" ? money(input) : number(input));
+        const deltaClass = neutral ? "status-neutral" : good ? "delta-up" : "delta-down";
+        const statusClass = neutral ? "status-neutral" : good ? "status-good" : "status-bad";
+        const statusText = neutral ? "без изменений" : good ? "лучше" : "хуже";
+        return `
+          <tr>
+            <td>${label}</td>
+            <td>${value(mayValue)}</td>
+            <td>${value(juneValue)}</td>
+            <td class="${deltaClass}">${value(delta)}</td>
+            <td><span class="${statusClass}">${statusText}</span></td>
+          </tr>
+        `;
+      })
+      .join("");
+  }
+
+  function renderSummary(total, spend, potentialRomi, actualRomi) {
+    const cpl = total.leads ? spend / total.leads : 0;
+    const cac = total.deals ? spend / total.deals : 0;
+    const factProfit = total.actualRevenue - spend;
+    const crmProfit = total.crmBudget - spend;
+    const summary = [
+      ["Факт по рекламе", money(total.actualRevenue), `${money(factProfit)} прибыль · ${percent(actualRomi)} ROMI`],
+      ["Потенциал CRM", money(total.crmBudget), `${money(crmProfit)} потенциально · ${percent(potentialRomi)} ROMI`],
+      ["Стоимость лида", money(cpl), `${number(total.leads)} лидов из рекламы`],
+      ["Стоимость сделки", money(cac), `${number(total.deals)} сделок CRM`],
+      ["Качество рекламы", percent(safeRate(total.qualified, total.deals)), `${number(total.qualified)} квал. из ${number(total.deals)} сделок`],
+      ["Реализация", number(total.realized), `${number(total.inWork)} в работе · ${number(total.closed)} закрыто`]
+    ];
+
+    els.summaryList.innerHTML = summary
+      .map(
+        ([label, value, meta]) => `
+          <div class="summary-item">
+            <div>
+              <span>${label}</span>
+              <strong>${value}</strong>
+            </div>
+            <em>${meta}</em>
+          </div>
+        `
+      )
+      .join("");
+  }
+
+  function renderDataTable() {
+    els.dataTable.innerHTML = state.months
+      .map((row, rowIndex) => {
+        const cells = editableFields
+          .map(([field, type]) => {
+            const value = type === "number" ? Number(row[field]) || 0 : row[field] || "";
+            return `
+              <td>
+                <input
+                  data-row="${rowIndex}"
+                  data-field="${field}"
+                  type="${type === "number" ? "number" : "text"}"
+                  step="${type === "number" ? "1" : ""}"
+                  value="${String(value).replace(/"/g, "&quot;")}"
+                />
+              </td>
+            `;
+          })
+          .join("");
+        return `
+          <tr>
+            ${cells}
+            <td><button class="icon-button" data-delete="${rowIndex}" type="button" aria-label="Удалить строку">×</button></td>
+          </tr>
+        `;
+      })
+      .join("");
+  }
+
+  function syncPeriodOptions() {
+    const current = els.periodFilter.value;
+    const dynamicOptions = state.months
+      .map((row) => `<option value="${row.id}">${row.month || row.id}</option>`)
+      .join("");
+    els.periodFilter.innerHTML = `<option value="all">${baseData.allPeriodLabel || "Май + июнь"}</option>${dynamicOptions}`;
+    els.periodFilter.value = state.months.some((row) => row.id === current) ? current : "all";
+  }
+
+  function updateCell(target) {
+    const rowIndex = Number(target.dataset.row);
+    const field = target.dataset.field;
+    if (!state.months[rowIndex] || !field) return;
+    if (field === "month") {
+      state.months[rowIndex][field] = target.value;
+      state.months[rowIndex].id = slugify(target.value) || `month-${rowIndex + 1}`;
+    } else {
+      state.months[rowIndex][field] = Number(target.value) || 0;
+      if (field === "crmBudget") state.months[rowIndex].ctRevenue = Number(target.value) || 0;
+    }
+    render({ dataTable: false });
+  }
+
+  function addMonth() {
+    const nextIndex = state.months.length + 1;
+    state.months.push(
+      normalizeMonth({
+        id: `month-${nextIndex}`,
+        month: `Месяц ${nextIndex}`,
+        spend: 0,
+        leads: 0,
+        deals: 0,
+        qualified: 0,
+        inWork: 0,
+        closed: 0,
+        offers: 0,
+        realized: 0,
+        actualRevenue: 0,
+        crmBudget: 0,
+        ctRevenue: 0
+      })
+    );
+    render();
+  }
+
+  function deleteMonth(index) {
+    if (state.months.length <= 1) return;
+    state.months.splice(index, 1);
+    render();
+  }
+
+  els.periodFilter.addEventListener("change", render);
+  els.totalSpendInput.addEventListener("input", (event) => {
+    state.promoSpendTotal = Number(event.target.value) || 0;
+    render();
+  });
+  els.saveButton.addEventListener("click", () => {
+    saveState();
+    els.saveButton.textContent = "Сохранено";
+    window.setTimeout(() => {
+      els.saveButton.textContent = "Сохранить";
+    }, 1200);
+  });
+  els.resetButton.addEventListener("click", () => {
+    localStorage.removeItem(STORAGE_KEY);
+    state = loadState();
+    render();
+  });
+  els.addMonthButton.addEventListener("click", addMonth);
+  els.dataTable.addEventListener("input", (event) => {
+    if (event.target.matches("input")) updateCell(event.target);
+  });
+  els.dataTable.addEventListener("click", (event) => {
+    const index = event.target.dataset.delete;
+    if (index !== undefined) deleteMonth(Number(index));
+  });
+
+  state.promoSpendMayJune = baseData.promoSpendMayJune;
+  render();
+})();
+
+    </script>
+  </body>
+</html>
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ArchiLoft · Реклама и сравнения</title>
+    <style>
+:root {
+  --bg: #f6f7fb;
+  --panel: #ffffff;
+  --panel-soft: #f9fafc;
+  --text: #1e2430;
+  --muted: #697386;
+  --line: #e7eaf0;
+  --violet: #7567f8;
+  --violet-soft: #eeebff;
+  --green: #15a875;
+  --green-soft: #e7f8f1;
+  --orange: #f28a45;
+  --orange-soft: #fff0e6;
+  --red: #d84b5b;
+  --red-soft: #fff0f2;
+  --blue: #2f80ed;
+  --shadow: 0 16px 42px rgba(33, 37, 54, 0.07);
+  --radius: 8px;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+  background: var(--bg);
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 236px;
+  padding: 28px 22px;
+  background: rgba(255, 255, 255, 0.88);
+  border-right: 1px solid var(--line);
+}
+
+.brand {
+  margin-bottom: 34px;
+}
+
+.brand__name {
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: 2px;
+  font-weight: 650;
+}
+
+.brand__sub {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.nav {
+  display: grid;
+  gap: 8px;
+}
+
+.nav__item {
+  display: block;
+  padding: 12px 14px;
+  color: var(--muted);
+  text-decoration: none;
+  border-radius: var(--radius);
+  font-size: 14px;
+}
+
+.nav__item.is-active,
+.nav__item:hover {
+  color: var(--violet);
+  background: var(--violet-soft);
+}
+
+.side-panel {
+  display: grid;
+  gap: 5px;
+  margin-top: 28px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.side-panel strong {
+  color: var(--text);
+}
+
+.side-panel__label {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #8a93a6;
+}
+
+.side-panel--accent {
+  border-color: #ded9ff;
+  background: #fbfaff;
+}
+
+.app {
+  margin-left: 236px;
+  padding: 22px 28px 36px;
+}
+
+.topbar {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--violet);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 24px;
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.subtitle,
+.panel__header p {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.control {
+  display: grid;
+  gap: 5px;
+  min-width: 160px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.control--number {
+  min-width: 170px;
+}
+
+.control select,
+.control input {
+  height: 40px;
+  padding: 0 12px;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  outline: none;
+}
+
+.button {
+  align-self: end;
+  height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.button:hover {
+  border-color: #cfd5e2;
+}
+
+.button--primary {
+  color: #fff;
+  background: var(--violet);
+  border-color: var(--violet);
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.kpi,
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.kpi {
+  min-height: 118px;
+  padding: 18px;
+}
+
+.kpi__label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.kpi strong {
+  display: block;
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+.kpi small {
+  display: block;
+  margin-top: 10px;
+  color: var(--green);
+  font-size: 12px;
+}
+
+.kpi--warning small {
+  color: var(--red);
+}
+
+.grid {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.grid--charts {
+  grid-template-columns: minmax(0, 1.55fr) minmax(330px, 0.85fr);
+}
+
+.grid--tables {
+  grid-template-columns: minmax(330px, 0.7fr) minmax(0, 1.3fr);
+}
+
+.panel {
+  min-width: 0;
+  padding: 18px;
+}
+
+.panel--wide {
+  min-width: 0;
+}
+
+.panel__header {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.badge {
+  flex: 0 0 auto;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--violet);
+  background: var(--violet-soft);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.chart {
+  width: 100%;
+  overflow: hidden;
+}
+
+.chart svg,
+.funnel svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.chart--large {
+  min-height: 286px;
+}
+
+.chart--weekly {
+  min-height: 270px;
+}
+
+.funnel {
+  min-height: 286px;
+}
+
+.panel--weeks {
+  margin-bottom: 12px;
+}
+
+.weekly-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(430px, 0.95fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.weekly-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(110px, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.weekly-stat {
+  padding: 12px;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.weekly-stat span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.weekly-stat strong {
+  display: block;
+  margin-top: 6px;
+  font-size: 16px;
+}
+
+.source-note {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.summary-list {
+  display: grid;
+  gap: 10px;
+}
+
+.summary-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 12px;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.summary-item span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.summary-item strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 15px;
+}
+
+.summary-item em {
+  color: var(--muted);
+  font-size: 12px;
+  font-style: normal;
+  text-align: right;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+}
+
+th,
+td {
+  padding: 11px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: right;
+  white-space: nowrap;
+}
+
+th:first-child,
+td:first-child {
+  text-align: left;
+}
+
+th {
+  color: var(--muted);
+  background: #fbfcff;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+.delta-up {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.delta-down {
+  color: var(--red);
+  font-weight: 700;
+}
+
+.status-good,
+.status-bad,
+.status-neutral {
+  display: inline-flex;
+  justify-content: center;
+  min-width: 82px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status-good {
+  color: var(--green);
+  background: var(--green-soft);
+}
+
+.status-bad {
+  color: var(--red);
+  background: var(--red-soft);
+}
+
+.status-neutral {
+  color: #7b6b18;
+  background: #fff8d9;
+}
+
+.panel--data {
+  margin-bottom: 0;
+}
+
+.data-table input {
+  width: 104px;
+  height: 34px;
+  padding: 0 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  text-align: right;
+}
+
+.data-table input[data-field="month"] {
+  width: 88px;
+  text-align: left;
+}
+
+.icon-button {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--red);
+  cursor: pointer;
+}
+
+@media (max-width: 1180px) {
+  .kpi-grid {
+    grid-template-columns: repeat(3, minmax(160px, 1fr));
+  }
+
+  .grid--charts,
+  .grid--tables,
+  .weekly-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .weekly-summary {
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+  }
+}
+
+@media (max-width: 820px) {
+  .sidebar {
+    position: static;
+    width: auto;
+    padding: 18px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .nav__item {
+    text-align: center;
+  }
+
+  .side-panel {
+    display: none;
+  }
+
+  .app {
+    margin-left: 0;
+    padding: 18px;
+  }
+
+  .topbar {
+    display: grid;
+  }
+
+  .controls {
+    justify-content: stretch;
+  }
+
+  .control,
+  .control--number,
+  .button {
+    width: 100%;
+  }
+
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .weekly-summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+    </style>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand__name">ARCHILOFT</div>
+        <div class="brand__sub">пространство для событий</div>
+      </div>
+      <nav class="nav" aria-label="Разделы">
+        <a href="#overview" class="nav__item is-active">Обзор</a>
+        <a href="#compare" class="nav__item">Сравнение</a>
+        <a href="#weeks" class="nav__item">Недели</a>
+        <a href="#funnel" class="nav__item">Воронка</a>
+        <a href="#data" class="nav__item">Данные</a>
+      </nav>
+      <section class="side-panel">
+        <span class="side-panel__label">Период</span>
         <strong id="periodLabel">Май-июнь 2026</strong>
       </section>
       <section class="side-panel side-panel--accent">
