@@ -401,6 +401,10 @@ h2 {
   overflow-x: auto;
 }
 
+.table-wrap--free {
+  margin-top: 16px;
+}
+
 table {
   width: 100%;
   border-collapse: separate;
@@ -526,7 +530,7 @@ tr:last-child td {
   }
 
   .nav {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .nav__item {
@@ -577,12 +581,13 @@ tr:last-child td {
         <a href="#overview" class="nav__item is-active">Обзор</a>
         <a href="#compare" class="nav__item">Сравнение</a>
         <a href="#weeks" class="nav__item">Недели</a>
+        <a href="#free" class="nav__item">Бесплатные</a>
         <a href="#funnel" class="nav__item">Воронка</a>
         <a href="#data" class="nav__item">Данные</a>
       </nav>
       <section class="side-panel">
         <span class="side-panel__label">Период</span>
-        <strong id="periodLabel">Апрель - 8 июля 2026</strong>
+        <strong id="periodLabel">Апрель - 13 июля 2026</strong>
       </section>
       <section class="side-panel side-panel--accent">
         <span class="side-panel__label">Источник</span>
@@ -596,16 +601,16 @@ tr:last-child td {
         <div>
           <p class="eyebrow">ArchiLoft · реклама</p>
           <h1>Дашборд рекламы и сравнений</h1>
-          <p class="subtitle">Promo Group / CPC: расход, сделки, деньги и динамика май-июнь.</p>
+          <p class="subtitle">Promo Group / CPC: расход, сделки, деньги и динамика май-июль.</p>
         </div>
         <div class="controls" aria-label="Фильтры">
           <label class="control">
             <span>Период</span>
             <select id="periodFilter">
-              <option value="all">Апрель - 8 июля</option>
+              <option value="all">Апрель - 13 июля</option>
               <option value="may">Май</option>
               <option value="june">Июнь</option>
-              <option value="july">Июль 01-08</option>
+              <option value="july">Июль 01-13</option>
             </select>
           </label>
           <label class="control control--number">
@@ -714,7 +719,7 @@ tr:last-child td {
             <h2>Разбивка рекламы по неделям</h2>
             <p>Расход CPC, CRM-лиды и потенциальный бюджет из недельной таблицы.</p>
           </div>
-          <span id="weeklyBadge" class="badge">10 недель</span>
+          <span id="weeklyBadge" class="badge">11 недель</span>
         </div>
         <div class="weekly-layout">
           <div>
@@ -738,6 +743,54 @@ tr:last-child td {
           </div>
         </div>
         <p id="weeklyNote" class="source-note"></p>
+      </section>
+
+      <section id="free" class="panel panel--weeks">
+        <div class="panel__header">
+          <div>
+            <h2>Бесплатные каналы по неделям</h2>
+            <p>CRM-сделки, статусы и потенциальный бюджет без рекламного расхода.</p>
+          </div>
+          <span id="freeWeeklyBadge" class="badge">11 недель</span>
+        </div>
+        <div class="weekly-layout">
+          <div>
+            <div id="freeWeeklySummary" class="weekly-summary"></div>
+            <div id="freeWeeklyChart" class="chart chart--weekly" role="img" aria-label="Недельная динамика бесплатных каналов"></div>
+          </div>
+          <div class="table-wrap">
+            <table class="weekly-table">
+              <thead>
+                <tr>
+                  <th>Неделя</th>
+                  <th>CRM-сделки</th>
+                  <th>В работе</th>
+                  <th>Закрыто</th>
+                  <th>Реализовано</th>
+                  <th>Потенциал</th>
+                  <th>Топ источник</th>
+                </tr>
+              </thead>
+              <tbody id="freeWeeklyTable"></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="table-wrap table-wrap--free">
+          <table class="free-source-table">
+            <thead>
+              <tr>
+                <th>Источник</th>
+                <th>CRM-сделки</th>
+                <th>В работе</th>
+                <th>Закрыто</th>
+                <th>Реализовано</th>
+                <th>Потенциал</th>
+              </tr>
+            </thead>
+            <tbody id="freeSourceTable"></tbody>
+          </table>
+        </div>
+        <p id="freeWeeklyNote" class="source-note"></p>
       </section>
 
       <section id="data" class="panel panel--data">
@@ -776,14 +829,16 @@ tr:last-child td {
 window.ARCHILOFT_AD_DATA = {
   brand: "ARCHILOFT",
   reportTitle: "Дашборд рекламы и сравнений",
-  sourceNote: "Данные обновлены по текущему отчету за период апрель - 8 июля 2026. В дашборде оставлены только реклама Promo Group / CPC и сравнение.",
-  allPeriodLabel: "Апрель - 8 июля",
-  promoSpendTotal: 483685.92,
-  promoSpendLabel: "апрель - 8 июля 2026",
-  promoSpendMeta: "Апр-июн: 465 000 ₽; июль 01-08: 18 686 ₽",
+  sourceNote: "Данные обновлены по текущему отчету за период апрель - 13 июля 2026. Факт оплат по рекламе исправлен на 0 ₽ по правке собственника.",
+  allPeriodLabel: "Апрель - 13 июля",
+  compareBadge: "май-июль",
+  promoSpendTotal: 509520.18,
+  promoSpendLabel: "апрель - 13 июля 2026",
+  promoSpendMeta: "Апр-июн: 465 000 ₽; июль 01-13: 44 520 ₽",
   promoSpendMayJune: 310000,
   promoSpendBeforeMay: 155000,
-  weeklySourceNote: "Недельная разбивка обновлена из таблицы «Реклама по неделям» файла «К СОВЕЩАНИЮ ГОТОВЫЙ 1.xlsx». Расход здесь указан как CPC по неделям.",
+  weeklySourceNote: "Недельная разбивка обновлена из таблицы «Реклама по неделям» файла «К_совещанию_бесплатные_каналы_май_июль_по_неделям.xlsx». Факт оплат по рекламе принудительно оставлен 0 ₽.",
+  freeSourceNote: "Бесплатные каналы сгруппированы по недельной разбивке из листа «Бесплатные каналы». Одинаковые календарные недели, попавшие в разные месяцы, объединены.",
   weeks: [
     {
       week: "01.05–08.05",
@@ -874,6 +929,209 @@ window.ARCHILOFT_AD_DATA = {
       realized: 0,
       actualRevenue: 0,
       cpl: 4671.48
+    },
+    {
+      week: "08.07–13.07",
+      spend: 25834.26,
+      leads: 3,
+      crmBudget: 780000,
+      realized: 0,
+      actualRevenue: 0,
+      cpl: 8611.42
+    }
+  ],
+  freeWeeks: [
+    {
+      week: "01.05–08.05",
+      deals: 18,
+      inWork: 0,
+      closed: 18,
+      realized: 0,
+      budget: 2780000,
+      topSource: "Органика",
+      topDeals: 7
+    },
+    {
+      week: "08.05–15.05",
+      deals: 20,
+      inWork: 1,
+      closed: 19,
+      realized: 0,
+      budget: 2110000,
+      topSource: "Лид не найден / не указан",
+      topDeals: 10
+    },
+    {
+      week: "15.05–22.05",
+      deals: 11,
+      inWork: 0,
+      closed: 11,
+      realized: 0,
+      budget: 1640000,
+      topSource: "Соцсети / Telegram",
+      topDeals: 4
+    },
+    {
+      week: "22.05–29.05",
+      deals: 20,
+      inWork: 2,
+      closed: 17,
+      realized: 1,
+      budget: 2990000,
+      topSource: "Соцсети / Telegram",
+      topDeals: 6
+    },
+    {
+      week: "29.05–05.06",
+      deals: 22,
+      inWork: 2,
+      closed: 20,
+      realized: 0,
+      budget: 3280480,
+      topSource: "Уже обращались",
+      topDeals: 5
+    },
+    {
+      week: "05.06–12.06",
+      deals: 17,
+      inWork: 1,
+      closed: 16,
+      realized: 0,
+      budget: 3440000,
+      topSource: "Соцсети / Telegram",
+      topDeals: 4
+    },
+    {
+      week: "12.06–19.06",
+      deals: 28,
+      inWork: 2,
+      closed: 26,
+      realized: 0,
+      budget: 5090000,
+      topSource: "Лид не найден / не указан",
+      topDeals: 11
+    },
+    {
+      week: "19.06–26.06",
+      deals: 27,
+      inWork: 9,
+      closed: 18,
+      realized: 0,
+      budget: 6600000,
+      topSource: "Лид не найден / не указан",
+      topDeals: 7
+    },
+    {
+      week: "26.06–03.07",
+      deals: 25,
+      inWork: 14,
+      closed: 11,
+      realized: 0,
+      budget: 6660000,
+      topSource: "Органика",
+      topDeals: 5
+    },
+    {
+      week: "01.07–08.07",
+      deals: 35,
+      inWork: 21,
+      closed: 14,
+      realized: 0,
+      budget: 7450000,
+      topSource: "Лид не найден / не указан",
+      topDeals: 14
+    },
+    {
+      week: "08.07–13.07",
+      deals: 24,
+      inWork: 18,
+      closed: 6,
+      realized: 0,
+      budget: 5300000,
+      topSource: "Лид не найден / не указан",
+      topDeals: 6
+    }
+  ],
+  freeChannels: [
+    {
+      source: "Лид не найден / не указан/тг",
+      deals: 140,
+      inWork: 23,
+      closed: 114,
+      realized: 3,
+      budget: 12220240
+    },
+    {
+      source: "Телеграм",
+      deals: 75,
+      inWork: 14,
+      closed: 61,
+      realized: 0,
+      budget: 7100240
+    },
+    {
+      source: "Органика",
+      deals: 35,
+      inWork: 8,
+      closed: 27,
+      realized: 0,
+      budget: 9030000
+    },
+    {
+      source: "Почта",
+      deals: 30,
+      inWork: 13,
+      closed: 17,
+      realized: 0,
+      budget: 4790000
+    },
+    {
+      source: "Уже обращались",
+      deals: 24,
+      inWork: 6,
+      closed: 18,
+      realized: 0,
+      budget: 4540000
+    },
+    {
+      source: "Прямой брендовый заход",
+      deals: 24,
+      inWork: 7,
+      closed: 16,
+      realized: 1,
+      budget: 4160000
+    },
+    {
+      source: "Рекомендации / рефералы",
+      deals: 14,
+      inWork: 2,
+      closed: 12,
+      realized: 0,
+      budget: 1660000
+    },
+    {
+      source: "Агрегаторы",
+      deals: 12,
+      inWork: 2,
+      closed: 10,
+      realized: 0,
+      budget: 1610000
+    },
+    {
+      source: "Ищу площадку / холодный поиск",
+      deals: 10,
+      inWork: 5,
+      closed: 5,
+      realized: 0,
+      budget: 2610000
+    },
+    {
+      source: "Revel Time / SpeedRent",
+      deals: 5,
+      inWork: 0,
+      closed: 5,
+      realized: 0,
+      budget: 600000
     }
   ],
   months: [
@@ -917,22 +1175,22 @@ window.ARCHILOFT_AD_DATA = {
     },
     {
       id: "july",
-      month: "Июль 01-08",
+      month: "Июль 01-13",
       source: "Яндекс Директ / CPC",
       provider: "Promo Group",
-      touchpoints: "Calltouch / CPC 01-08 июля",
-      spend: 18685.92,
-      leads: 4,
-      deals: 4,
-      qualified: 4,
-      inWork: 3,
+      touchpoints: "Calltouch / CPC 01-13 июля",
+      spend: 44520.18,
+      leads: 7,
+      deals: 7,
+      qualified: 7,
+      inWork: 6,
       closed: 1,
       calls: 0,
-      offers: 2,
+      offers: 4,
       realized: 0,
-      actualRevenue: 400000,
-      ctRevenue: 400000,
-      crmBudget: 640000
+      actualRevenue: 0,
+      ctRevenue: 0,
+      crmBudget: 1420000
     }
   ]
 };
@@ -940,7 +1198,7 @@ window.ARCHILOFT_AD_DATA = {
     </script>
     <script>
 (function () {
-  const STORAGE_KEY = "archiloft-ad-dashboard-v2";
+  const STORAGE_KEY = "archiloft-ad-dashboard-v3";
   const baseData = window.ARCHILOFT_AD_DATA;
   const editableFields = [
     ["month", "text"],
@@ -984,6 +1242,12 @@ window.ARCHILOFT_AD_DATA = {
     weeklyTable: document.getElementById("weeklyTable"),
     weeklyBadge: document.getElementById("weeklyBadge"),
     weeklyNote: document.getElementById("weeklyNote"),
+    freeWeeklyChart: document.getElementById("freeWeeklyChart"),
+    freeWeeklySummary: document.getElementById("freeWeeklySummary"),
+    freeWeeklyTable: document.getElementById("freeWeeklyTable"),
+    freeWeeklyBadge: document.getElementById("freeWeeklyBadge"),
+    freeWeeklyNote: document.getElementById("freeWeeklyNote"),
+    freeSourceTable: document.getElementById("freeSourceTable"),
     comparisonTable: document.getElementById("comparisonTable"),
     dataTable: document.getElementById("dataTable"),
     summaryList: document.getElementById("summaryList"),
@@ -1119,18 +1383,19 @@ window.ARCHILOFT_AD_DATA = {
     els.kpiActualRevenue.textContent = money(total.actualRevenue);
     els.kpiActualMeta.textContent = `${number(total.realized)} реализовано · ROMI факт ${percent(actualRomi)}`;
     els.kpiCrmBudget.textContent = money(total.crmBudget);
-    els.kpiCrmMeta.textContent = `Выручка CT: ${money(total.ctRevenue)}`;
+    els.kpiCrmMeta.textContent = "Плановая выручка по сделкам CRM";
     els.kpiRomi.textContent = percent(potentialRomi);
     els.kpiRomiMeta.textContent = `CPL: ${money(cpl)} · конверсия в сделку ${percent(safeRate(total.deals, total.leads))}`;
     els.kpiLeadsDeals.textContent = `${number(total.leads)} / ${number(total.deals)}`;
     els.kpiLeadMeta.textContent = `${number(total.qualified)} квалифицировано`;
     els.kpiStages.textContent = `${number(total.inWork)} / ${number(total.closed)}`;
     els.kpiStageMeta.textContent = `${number(total.offers)} КП · ${number(total.realized)} реализовано`;
-    els.compareBadge.textContent = rows.length === 1 ? rows[0].month : "май-июнь";
+    els.compareBadge.textContent = rows.length === 1 ? rows[0].month : baseData.compareBadge || "май-июль";
 
     renderComparisonChart();
     renderFunnel(total);
     renderWeekly();
+    renderFreeChannels();
     renderComparisonTable();
     renderSummary(total, spend, potentialRomi, actualRomi);
     if (shouldRenderDataTable) renderDataTable();
@@ -1375,6 +1640,166 @@ window.ARCHILOFT_AD_DATA = {
           </tr>
         `;
       })
+      .join("");
+  }
+
+  function freeTotals(rows) {
+    return rows.reduce(
+      (acc, row) => {
+        acc.deals += Number(row.deals) || 0;
+        acc.inWork += Number(row.inWork) || 0;
+        acc.closed += Number(row.closed) || 0;
+        acc.realized += Number(row.realized) || 0;
+        acc.budget += Number(row.budget) || 0;
+        return acc;
+      },
+      { deals: 0, inWork: 0, closed: 0, realized: 0, budget: 0 }
+    );
+  }
+
+  function renderFreeChannels() {
+    const weeks = baseData.freeWeeks || [];
+    const channels = baseData.freeChannels || [];
+    const total = freeTotals(weeks);
+    const bestWeek = weeks.reduce((best, row) => (Number(row.deals) > Number(best.deals || 0) ? row : best), {});
+
+    if (els.freeWeeklyBadge) els.freeWeeklyBadge.textContent = `${weeks.length} недель`;
+    if (els.freeWeeklyNote) els.freeWeeklyNote.textContent = baseData.freeSourceNote || "";
+    renderFreeSummary(total, bestWeek);
+    renderFreeWeeklyChart(weeks);
+    renderFreeWeeklyTable(weeks);
+    renderFreeSourceTable(channels);
+  }
+
+  function renderFreeSummary(total, bestWeek) {
+    if (!els.freeWeeklySummary) return;
+    const items = [
+      ["CRM-сделки", number(total.deals)],
+      ["Потенциал CRM", money(total.budget)],
+      ["В работе", number(total.inWork)],
+      ["Закрыто", number(total.closed)],
+      ["Реализовано", number(total.realized)]
+    ];
+
+    els.freeWeeklySummary.innerHTML = items
+      .map(
+        ([label, value]) => `
+          <div class="weekly-stat">
+            <span>${label}</span>
+            <strong>${value}</strong>
+          </div>
+        `
+      )
+      .join("");
+
+    if (bestWeek.week) {
+      els.freeWeeklySummary.innerHTML += `
+        <div class="weekly-stat">
+          <span>Лучшая неделя</span>
+          <strong>${bestWeek.week} · ${number(bestWeek.deals)}</strong>
+        </div>
+      `;
+    }
+  }
+
+  function renderFreeWeeklyChart(weeks) {
+    if (!els.freeWeeklyChart) return;
+    const width = 820;
+    const height = 278;
+    const left = 42;
+    const bottom = 230;
+    const barGap = 12;
+    const barW = Math.max(20, (width - left - 34 - barGap * weeks.length) / Math.max(weeks.length, 1));
+    const maxBudget = Math.max(...weeks.map((row) => Number(row.budget) || 0), 1);
+    const maxDeals = Math.max(...weeks.map((row) => Number(row.deals) || 0), 1);
+    const points = [];
+
+    const bars = weeks
+      .map((row, index) => {
+        const x = left + index * (barW + barGap);
+        const budget = Number(row.budget) || 0;
+        const deals = Number(row.deals) || 0;
+        const h = Math.max(2, (budget / maxBudget) * 145);
+        const y = bottom - h;
+        const pointY = bottom - (deals / maxDeals) * 170;
+        points.push(`${x + barW / 2},${pointY}`);
+        return `
+          <g>
+            <rect x="${x}" y="${y}" width="${barW}" height="${h}" rx="5" fill="#b9dafc"></rect>
+            <text x="${x + barW / 2}" y="${bottom + 18}" text-anchor="middle" class="week-label">${shortWeek(row.week)}</text>
+            <text x="${x + barW / 2}" y="${y - 6}" text-anchor="middle" class="week-money">${budget ? money(budget).replace(" ₽", "") : "0"}</text>
+          </g>
+        `;
+      })
+      .join("");
+
+    const dots = weeks
+      .map((row, index) => {
+        const x = left + index * (barW + barGap) + barW / 2;
+        const y = bottom - ((Number(row.deals) || 0) / maxDeals) * 170;
+        return `
+          <g>
+            <circle cx="${x}" cy="${y}" r="4.5" fill="#f28a45"></circle>
+            <text x="${x}" y="${y - 10}" text-anchor="middle" class="week-leads">${number(row.deals)}</text>
+          </g>
+        `;
+      })
+      .join("");
+
+    els.freeWeeklyChart.innerHTML = `
+      <svg viewBox="0 0 ${width} ${height}" aria-hidden="true">
+        <style>
+          .week-label{font:600 10px Inter,Arial;fill:#697386}
+          .week-money{font:600 10px Inter,Arial;fill:#697386}
+          .week-leads{font:700 11px Inter,Arial;fill:#f28a45}
+          .week-legend{font:600 12px Inter,Arial;fill:#697386}
+        </style>
+        <line x1="${left - 10}" y1="${bottom}" x2="${width - 16}" y2="${bottom}" stroke="#e7eaf0"></line>
+        ${bars}
+        <polyline points="${points.join(" ")}" fill="none" stroke="#f28a45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>
+        ${dots}
+        <rect x="${left}" y="16" width="24" height="10" rx="3" fill="#b9dafc"></rect>
+        <text x="${left + 34}" y="26" class="week-legend">Потенциал CRM, ₽</text>
+        <circle cx="${left + 172}" cy="21" r="5" fill="#f28a45"></circle>
+        <text x="${left + 184}" y="26" class="week-legend">CRM-сделки</text>
+      </svg>
+    `;
+  }
+
+  function renderFreeWeeklyTable(weeks) {
+    if (!els.freeWeeklyTable) return;
+    els.freeWeeklyTable.innerHTML = weeks
+      .map(
+        (row) => `
+          <tr>
+            <td>${row.week}</td>
+            <td>${number(row.deals)}</td>
+            <td>${number(row.inWork)}</td>
+            <td>${number(row.closed)}</td>
+            <td>${number(row.realized)}</td>
+            <td>${money(row.budget)}</td>
+            <td>${row.topSource} · ${number(row.topDeals)}</td>
+          </tr>
+        `
+      )
+      .join("");
+  }
+
+  function renderFreeSourceTable(channels) {
+    if (!els.freeSourceTable) return;
+    els.freeSourceTable.innerHTML = channels
+      .map(
+        (row) => `
+          <tr>
+            <td>${row.source}</td>
+            <td>${number(row.deals)}</td>
+            <td>${number(row.inWork)}</td>
+            <td>${number(row.closed)}</td>
+            <td>${number(row.realized)}</td>
+            <td>${money(row.budget)}</td>
+          </tr>
+        `
+      )
       .join("");
   }
 
