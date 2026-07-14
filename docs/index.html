@@ -659,8 +659,8 @@ tr:last-child td {
         <article id="compare" class="panel panel--wide">
           <div class="panel__header">
             <div>
-              <h2>Май против июня</h2>
-              <p>Динамика по рекламному источнику Promo Group.</p>
+              <h2>Май · июнь · июль</h2>
+              <p>Динамика по рекламному источнику Promo Group с отдельной колонкой июля.</p>
             </div>
             <span id="compareBadge" class="badge">CPC</span>
           </div>
@@ -703,7 +703,9 @@ tr:last-child td {
                   <th>Показатель</th>
                   <th>Май</th>
                   <th>Июнь</th>
-                  <th>Разница</th>
+                  <th>Июль</th>
+                  <th>Июнь - май</th>
+                  <th>Июль - июнь</th>
                   <th>Итог</th>
                 </tr>
               </thead>
@@ -1417,7 +1419,7 @@ window.ARCHILOFT_AD_DATA = {
   }
 
   function renderComparisonChart() {
-    const rows = state.months.slice(0, 2);
+    const rows = state.months.slice(0, 3);
     const metrics = [
       ["Расход", "spend", "money", false],
       ["Лиды", "leads", "number", true],
@@ -1427,31 +1429,38 @@ window.ARCHILOFT_AD_DATA = {
       ["Потенциал", "crmBudget", "money", true]
     ];
     const width = 760;
-    const height = 294;
+    const height = 330;
     const left = 64;
     const top = 24;
-    const rowH = 38;
+    const rowH = 43;
+    const monthColors = ["#c9c2ff", "#7567f8", "#2f80ed"];
     const maxValue = Math.max(...metrics.flatMap(([, key]) => rows.map((row) => Number(row[key]) || 0)), 1);
     const may = rows[0] || {};
     const june = rows[1] || {};
+    const july = rows[2] || {};
 
     const bars = metrics
-      .map(([label, key, format], index) => {
+      .map(([label, key, format, higherIsBetter], index) => {
         const y = top + index * rowH;
-        const mayValue = Number(may[key]) || 0;
-        const juneValue = Number(june[key]) || 0;
-        const mayW = Math.max(2, (mayValue / maxValue) * 520);
-        const juneW = Math.max(2, (juneValue / maxValue) * 520);
-        const delta = juneValue - mayValue;
+        const values = [may, june, july].map((row) => Number(row[key]) || 0);
+        const widths = values.map((value) => Math.max(2, (value / maxValue) * 500));
+        const delta = values[2] - values[1];
         const display = format === "money" ? money(delta) : number(delta);
-        const className = delta >= 0 ? "delta-up" : "delta-down";
+        const className = delta === 0 ? "status-neutral-fill" : (higherIsBetter ? delta >= 0 : delta <= 0) ? "delta-up" : "delta-down";
+        const maxW = Math.max(...widths);
+        const monthBars = values
+          .map(
+            (_, monthIndex) => `
+              <rect x="${left}" y="${y + monthIndex * 12}" width="${widths[monthIndex]}" height="9" rx="4" fill="${monthColors[monthIndex]}"></rect>
+            `
+          )
+          .join("");
 
         return `
           <g>
-            <text x="0" y="${y + 17}" class="svg-label">${label}</text>
-            <rect x="${left}" y="${y}" width="${mayW}" height="13" rx="4" fill="#c9c2ff"></rect>
-            <rect x="${left}" y="${y + 17}" width="${juneW}" height="13" rx="4" fill="#7567f8"></rect>
-            <text x="${left + Math.max(mayW, juneW) + 12}" y="${y + 24}" class="${className}">${display}</text>
+            <text x="0" y="${y + 22}" class="svg-label">${label}</text>
+            ${monthBars}
+            <text x="${left + maxW + 12}" y="${y + 25}" class="${className}">${display}</text>
           </g>
         `;
       })
@@ -1463,12 +1472,16 @@ window.ARCHILOFT_AD_DATA = {
           .svg-label{font:600 12px Inter,Arial;fill:#697386}
           .delta-up{font:700 12px Inter,Arial;fill:#15a875}
           .delta-down{font:700 12px Inter,Arial;fill:#d84b5b}
+          .status-neutral-fill{font:700 12px Inter,Arial;fill:#7b6b18}
           .legend{font:600 12px Inter,Arial;fill:#697386}
         </style>
-        <text x="${left}" y="278" class="legend">Май</text>
-        <rect x="${left + 34}" y="268" width="26" height="10" rx="3" fill="#c9c2ff"></rect>
-        <text x="${left + 78}" y="278" class="legend">Июнь</text>
-        <rect x="${left + 120}" y="268" width="26" height="10" rx="3" fill="#7567f8"></rect>
+        <text x="${left}" y="314" class="legend">Май</text>
+        <rect x="${left + 34}" y="304" width="26" height="10" rx="3" fill="${monthColors[0]}"></rect>
+        <text x="${left + 78}" y="314" class="legend">Июнь</text>
+        <rect x="${left + 120}" y="304" width="26" height="10" rx="3" fill="${monthColors[1]}"></rect>
+        <text x="${left + 166}" y="314" class="legend">Июль</text>
+        <rect x="${left + 210}" y="304" width="26" height="10" rx="3" fill="${monthColors[2]}"></rect>
+        <text x="${left + 258}" y="314" class="legend">справа: июль - июнь</text>
         ${bars}
       </svg>
     `;
@@ -1806,6 +1819,7 @@ window.ARCHILOFT_AD_DATA = {
   function renderComparisonTable() {
     const may = state.months[0] || {};
     const june = state.months[1] || {};
+    const july = state.months[2] || {};
     const rows = [
       ["Расход", "spend", "money", false],
       ["Лиды", "leads", "number", true],
@@ -1823,19 +1837,27 @@ window.ARCHILOFT_AD_DATA = {
       .map(([label, key, format, higherIsBetter]) => {
         const mayValue = Number(may[key]) || 0;
         const juneValue = Number(june[key]) || 0;
-        const delta = juneValue - mayValue;
-        const good = higherIsBetter ? delta >= 0 : delta <= 0;
-        const neutral = delta === 0;
+        const julyValue = Number(july[key]) || 0;
+        const juneDelta = juneValue - mayValue;
+        const julyDelta = julyValue - juneValue;
+        const good = higherIsBetter ? julyDelta >= 0 : julyDelta <= 0;
+        const neutral = julyDelta === 0;
         const value = (input) => (format === "money" ? money(input) : number(input));
-        const deltaClass = neutral ? "status-neutral" : good ? "delta-up" : "delta-down";
+        const deltaClass = (delta) => {
+          if (delta === 0) return "status-neutral";
+          const isGood = higherIsBetter ? delta >= 0 : delta <= 0;
+          return isGood ? "delta-up" : "delta-down";
+        };
         const statusClass = neutral ? "status-neutral" : good ? "status-good" : "status-bad";
-        const statusText = neutral ? "без изменений" : good ? "лучше" : "хуже";
+        const statusText = neutral ? "без изменений" : good ? "июль лучше" : "июль хуже";
         return `
           <tr>
             <td>${label}</td>
             <td>${value(mayValue)}</td>
             <td>${value(juneValue)}</td>
-            <td class="${deltaClass}">${value(delta)}</td>
+            <td>${value(julyValue)}</td>
+            <td class="${deltaClass(juneDelta)}">${value(juneDelta)}</td>
+            <td class="${deltaClass(julyDelta)}">${value(julyDelta)}</td>
             <td><span class="${statusClass}">${statusText}</span></td>
           </tr>
         `;
