@@ -363,6 +363,10 @@ h2 {
   font-size: 12px;
 }
 
+.source-note:empty {
+  display: none;
+}
+
 .summary-list {
   display: grid;
   gap: 10px;
@@ -601,7 +605,7 @@ tr:last-child td {
         <div>
           <p class="eyebrow">ArchiLoft · реклама</p>
           <h1>Дашборд рекламы и сравнений</h1>
-          <p class="subtitle">Promo Group / CPC: расход, сделки, деньги и динамика май-июль до 15.07.</p>
+          <p class="subtitle">Июль 01-15: расход рекламы, факт оплат, сделки и бесплатные источники по неделям.</p>
         </div>
         <div class="controls" aria-label="Фильтры">
           <label class="control">
@@ -610,7 +614,7 @@ tr:last-child td {
               <option value="all">Апрель - 15 июля</option>
               <option value="may">Май</option>
               <option value="june">Июнь</option>
-              <option value="july">Июль 01-15</option>
+              <option value="july" selected>Июль 01-15</option>
             </select>
           </label>
           <label class="control control--number">
@@ -718,10 +722,10 @@ tr:last-child td {
       <section id="weeks" class="panel panel--weeks">
         <div class="panel__header">
           <div>
-            <h2>Разбивка рекламы по неделям</h2>
-            <p>Расход CPC, CRM-лиды и потенциальный бюджет из недельной таблицы.</p>
+            <h2>Платная реклама по неделям</h2>
+            <p>Июль: расход CPC, факт оплат, CRM-лиды и потенциальный бюджет.</p>
           </div>
-          <span id="weeklyBadge" class="badge">11 недель</span>
+          <span id="weeklyBadge" class="badge">2 недели</span>
         </div>
         <div class="weekly-layout">
           <div>
@@ -750,10 +754,10 @@ tr:last-child td {
       <section id="free" class="panel panel--weeks">
         <div class="panel__header">
           <div>
-            <h2>Бесплатные каналы по неделям</h2>
-            <p>CRM-сделки, статусы и потенциальный бюджет без рекламного расхода.</p>
+            <h2>Бесплатные источники по неделям</h2>
+            <p>Июль: лиды, CRM-сделки и расход 0 ₽ по второй вкладке отчета.</p>
           </div>
-          <span id="freeWeeklyBadge" class="badge">11 недель</span>
+          <span id="freeWeeklyBadge" class="badge">2 недели</span>
         </div>
         <div class="weekly-layout">
           <div>
@@ -765,11 +769,9 @@ tr:last-child td {
               <thead>
                 <tr>
                   <th>Неделя</th>
+                  <th>Лиды</th>
                   <th>CRM-сделки</th>
-                  <th>В работе</th>
-                  <th>Закрыто</th>
-                  <th>Реализовано</th>
-                  <th>Потенциал</th>
+                  <th>Расход</th>
                   <th>Топ источник</th>
                 </tr>
               </thead>
@@ -781,12 +783,11 @@ tr:last-child td {
           <table class="free-source-table">
             <thead>
               <tr>
+                <th>Неделя</th>
                 <th>Источник</th>
+                <th>Лиды</th>
                 <th>CRM-сделки</th>
-                <th>В работе</th>
-                <th>Закрыто</th>
-                <th>Реализовано</th>
-                <th>Потенциал</th>
+                <th>Расход</th>
               </tr>
             </thead>
             <tbody id="freeSourceTable"></tbody>
@@ -831,7 +832,7 @@ tr:last-child td {
 window.ARCHILOFT_AD_DATA = {
   brand: "ARCHILOFT",
   reportTitle: "Дашборд рекламы и сравнений",
-  sourceNote: "Данные обновлены по отчету «К_совещанию_обновлено_01_15_июля_по_неделям_и_CRM.xlsx» за период апрель - 15 июля 2026. Факт оплат по рекламе оставлен 0 ₽: это подтверждают главные цифры и недельная рекламная таблица.",
+  sourceNote: "Июль обновлен по файлу «Реклама по неделям .xlsx», лист «Реклама по неделям». Для платной рекламы показаны расход CPC, CRM-лиды, потенциальный бюджет и факт оплат. Для бесплатных источников в листе есть лиды, сделки и расход 0 ₽.",
   allPeriodLabel: "Апрель - 15 июля",
   compareBadge: "май-июль 15.07",
   promoSpendTotal: 517842.84,
@@ -839,8 +840,8 @@ window.ARCHILOFT_AD_DATA = {
   promoSpendMeta: "Апр-июн: 465 000 ₽; июль 01-15: 52 843 ₽",
   promoSpendMayJune: 310000,
   promoSpendBeforeMay: 155000,
-  weeklySourceNote: "Недельная разбивка обновлена из листа «Реклама по неделям» файла «К_совещанию_обновлено_01_15_июля_по_неделям_и_CRM.xlsx». Итог недельных рекламных строк может отличаться от месячного CRM-итога из-за календарных недель на стыке месяцев.",
-  freeSourceNote: "Бесплатные каналы обновлены из листа «Бесплатные каналы» файла «К_совещанию_обновлено_01_15_июля_по_неделям_и_CRM.xlsx».",
+  weeklySourceNote: "",
+  freeSourceNote: "",
   weeks: [
     {
       week: "01.05–08.05",
@@ -1035,26 +1036,136 @@ window.ARCHILOFT_AD_DATA = {
     },
     {
       week: "01.07–08.07",
-      deals: 35,
-      inWork: 21,
-      closed: 14,
-      realized: 0,
-      budget: 7450000,
-      topSource: "Лид не найден / не указан",
-      topDeals: 14
+      leads: 10,
+      deals: 41,
+      spend: 0,
+      topSource: "Лид не указан",
+      topDeals: 34
     },
     {
       week: "08.07–15.07",
-      deals: 41,
-      inWork: 32,
-      closed: 9,
-      realized: 0,
-      budget: 8070000,
-      topSource: "Лид не найден / не указан",
-      topDeals: 7
+      leads: 48,
+      deals: 28,
+      spend: 0,
+      topSource: "Органика",
+      topDeals: 6
     }
   ],
   freeChannels: [
+    {
+      week: "01.07–08.07",
+      source: "Органика",
+      leads: 4,
+      deals: 3,
+      spend: 0
+    },
+    {
+      week: "01.07–08.07",
+      source: "Referral",
+      leads: 1,
+      deals: 1,
+      spend: 0
+    },
+    {
+      week: "01.07–08.07",
+      source: "Прямой / none",
+      leads: 5,
+      deals: 3,
+      spend: 0
+    },
+    {
+      week: "01.07–08.07",
+      source: "Лид не указан",
+      leads: 0,
+      deals: 34,
+      spend: 0
+    },
+    {
+      week: "08.07–15.07",
+      source: "Органика",
+      leads: 7,
+      deals: 6,
+      spend: 0
+    },
+    {
+      week: "08.07–15.07",
+      source: "Агрегатор",
+      leads: 2,
+      deals: 1,
+      spend: 0
+    },
+    {
+      week: "08.07–15.07",
+      source: "Почта",
+      leads: 4,
+      deals: 4,
+      spend: 0
+    },
+    {
+      week: "08.07–15.07",
+      source: "Referral",
+      leads: 2,
+      deals: 1,
+      spend: 0
+    },
+    {
+      week: "08.07–15.07",
+      source: "Партнерство",
+      leads: 1,
+      deals: 0,
+      spend: 0
+    },
+    {
+      week: "08.07–15.07",
+      source: "Спам",
+      leads: 8,
+      deals: 0,
+      spend: 0
+    },
+    {
+      week: "08.07–15.07",
+      source: "Уже знали",
+      leads: 6,
+      deals: 5,
+      spend: 0
+    },
+    {
+      week: "08.07–15.07",
+      source: "Прямой / none",
+      leads: 3,
+      deals: 2,
+      spend: 0
+    },
+    {
+      week: "08.07–15.07",
+      source: "Revel time",
+      leads: 1,
+      deals: 0,
+      spend: 0
+    },
+    {
+      week: "08.07–15.07",
+      source: "Bash today",
+      leads: 1,
+      deals: 1,
+      spend: 0
+    },
+    {
+      week: "08.07–15.07",
+      source: "Манго звонок",
+      leads: 7,
+      deals: 3,
+      spend: 0
+    },
+    {
+      week: "08.07–15.07",
+      source: "Телеграм заявки",
+      leads: 6,
+      deals: 5,
+      spend: 0
+    }
+  ],
+  historicFreeChannels: [
     {
       source: "Лид не найден / не указан",
       deals: 138,
@@ -1264,7 +1375,7 @@ window.ARCHILOFT_AD_DATA = {
     </script>
     <script>
 (function () {
-  const STORAGE_KEY = "archiloft-ad-dashboard-v4";
+  const STORAGE_KEY = "archiloft-ad-dashboard-v5";
   const baseData = window.ARCHILOFT_AD_DATA;
   const editableFields = [
     ["month", "text"],
@@ -1447,9 +1558,9 @@ window.ARCHILOFT_AD_DATA = {
         ? baseData.promoSpendMeta || `${money(state.promoSpendMayJune || baseData.promoSpendMayJune)} май-июнь; ${money(baseData.promoSpendBeforeMay)} до мая`
         : `Расход выбранного периода`;
     els.kpiActualRevenue.textContent = money(total.actualRevenue);
-    els.kpiActualMeta.textContent = `${number(total.realized)} реализовано · ROMI факт ${percent(actualRomi)}`;
+    els.kpiActualMeta.textContent = `${number(total.realized)} реализовано из рекламы`;
     els.kpiCrmBudget.textContent = money(total.crmBudget);
-    els.kpiCrmMeta.textContent = "Плановая выручка по сделкам CRM";
+    els.kpiCrmMeta.textContent = "Потенциальный бюджет CRM, не факт оплат";
     els.kpiRomi.textContent = percent(potentialRomi);
     els.kpiRomiMeta.textContent = `CPL: ${money(cpl)} · конверсия в сделку ${percent(safeRate(total.deals, total.leads))}`;
     els.kpiLeadsDeals.textContent = `${number(total.leads)} / ${number(total.deals)}`;
@@ -1468,8 +1579,37 @@ window.ARCHILOFT_AD_DATA = {
     syncPeriodOptions();
   }
 
-  function weeklyTotals() {
-    return (baseData.weeks || []).reduce(
+  function hasField(row, field) {
+    return Object.prototype.hasOwnProperty.call(row, field);
+  }
+
+  function displayNumber(row, field) {
+    return hasField(row, field) ? number(row[field]) : "—";
+  }
+
+  function displayMoney(row, field) {
+    return hasField(row, field) ? money(row[field]) : "—";
+  }
+
+  function selectedPeriod() {
+    return els.periodFilter ? els.periodFilter.value : "all";
+  }
+
+  function filterRowsByPeriod(rows) {
+    const selected = selectedPeriod();
+    if (selected === "all") return rows;
+    return rows.filter((row) => {
+      const week = String(row.week || "");
+      const start = week.split("–")[0];
+      if (selected === "july") return start.endsWith(".07");
+      if (selected === "june") return week.includes(".06");
+      if (selected === "may") return week.includes(".05");
+      return true;
+    });
+  }
+
+  function weeklyTotals(rows) {
+    return rows.reduce(
       (acc, row) => {
         acc.spend += Number(row.spend) || 0;
         acc.leads += Number(row.leads) || 0;
@@ -1592,8 +1732,8 @@ window.ARCHILOFT_AD_DATA = {
   }
 
   function renderWeekly() {
-    const weeks = baseData.weeks || [];
-    const total = weeklyTotals();
+    const weeks = filterRowsByPeriod(baseData.weeks || []);
+    const total = weeklyTotals(weeks);
     const bestLeadWeek = weeks.reduce((best, row) => (Number(row.leads) > Number(best.leads || 0) ? row : best), {});
     const cpl = total.leads ? total.spend / total.leads : 0;
 
@@ -1608,9 +1748,10 @@ window.ARCHILOFT_AD_DATA = {
     if (!els.weeklySummary) return;
     const items = [
       ["Расход CPC", money(total.spend)],
+      ["Факт оплат", money(total.actualRevenue)],
       ["CRM-лиды", number(total.leads)],
       ["Потенциал CRM", money(total.crmBudget)],
-      ["Средняя цена лида", money(cpl)]
+      ["Реализовано", number(total.realized)]
     ];
     els.weeklySummary.innerHTML = items
       .map(
@@ -1724,19 +1865,44 @@ window.ARCHILOFT_AD_DATA = {
     return rows.reduce(
       (acc, row) => {
         acc.deals += Number(row.deals) || 0;
+        if (hasField(row, "leads")) {
+          acc.leads += Number(row.leads) || 0;
+          acc.leadRows += 1;
+        }
         acc.inWork += Number(row.inWork) || 0;
         acc.closed += Number(row.closed) || 0;
         acc.realized += Number(row.realized) || 0;
         acc.budget += Number(row.budget) || 0;
+        if (hasField(row, "spend")) {
+          acc.spend += Number(row.spend) || 0;
+          acc.spendRows += 1;
+        }
+        acc.actualRevenue += Number(row.actualRevenue) || 0;
+        acc.hasRevenue = acc.hasRevenue || hasField(row, "actualRevenue");
+        acc.rows += 1;
         return acc;
       },
-      { deals: 0, inWork: 0, closed: 0, realized: 0, budget: 0 }
+      {
+        rows: 0,
+        deals: 0,
+        leads: 0,
+        leadRows: 0,
+        inWork: 0,
+        closed: 0,
+        realized: 0,
+        budget: 0,
+        spend: 0,
+        spendRows: 0,
+        actualRevenue: 0,
+        hasRevenue: false
+      }
     );
   }
 
   function renderFreeChannels() {
-    const weeks = baseData.freeWeeks || [];
-    const channels = baseData.freeChannels || [];
+    const weeks = filterRowsByPeriod(baseData.freeWeeks || []);
+    const isJuly = selectedPeriod() === "july";
+    const channels = isJuly ? baseData.freeChannels || [] : baseData.historicFreeChannels || baseData.freeChannels || [];
     const total = freeTotals(weeks);
     const bestWeek = weeks.reduce((best, row) => (Number(row.deals) > Number(best.deals || 0) ? row : best), {});
 
@@ -1745,17 +1911,18 @@ window.ARCHILOFT_AD_DATA = {
     renderFreeSummary(total, bestWeek);
     renderFreeWeeklyChart(weeks);
     renderFreeWeeklyTable(weeks);
-    renderFreeSourceTable(channels);
+    renderFreeSourceTable(channels, !isJuly);
   }
 
   function renderFreeSummary(total, bestWeek) {
     if (!els.freeWeeklySummary) return;
+    const revenueValue = total.hasRevenue ? money(total.actualRevenue) : "не указан";
+    const leadsLabel = total.leadRows && total.leadRows < total.rows ? "Лиды июля" : "Лиды";
     const items = [
+      ["Расход", total.spendRows ? money(total.spend) : "—"],
+      [leadsLabel, total.leadRows ? number(total.leads) : "—"],
       ["CRM-сделки", number(total.deals)],
-      ["Потенциал CRM", money(total.budget)],
-      ["В работе", number(total.inWork)],
-      ["Закрыто", number(total.closed)],
-      ["Реализовано", number(total.realized)]
+      ["Факт оплат", revenueValue]
     ];
 
     els.freeWeeklySummary.innerHTML = items
@@ -1772,7 +1939,7 @@ window.ARCHILOFT_AD_DATA = {
     if (bestWeek.week) {
       els.freeWeeklySummary.innerHTML += `
         <div class="weekly-stat">
-          <span>Лучшая неделя</span>
+          <span>Больше всего сделок</span>
           <strong>${bestWeek.week} · ${number(bestWeek.deals)}</strong>
         </div>
       `;
@@ -1787,24 +1954,26 @@ window.ARCHILOFT_AD_DATA = {
     const bottom = 230;
     const barGap = 12;
     const barW = Math.max(20, (width - left - 34 - barGap * weeks.length) / Math.max(weeks.length, 1));
-    const maxBudget = Math.max(...weeks.map((row) => Number(row.budget) || 0), 1);
+    const leadWeeks = weeks.filter((row) => hasField(row, "leads"));
+    const maxLeads = Math.max(...leadWeeks.map((row) => Number(row.leads) || 0), 1);
     const maxDeals = Math.max(...weeks.map((row) => Number(row.deals) || 0), 1);
-    const points = [];
+    const leadPoints = [];
 
     const bars = weeks
       .map((row, index) => {
         const x = left + index * (barW + barGap);
-        const budget = Number(row.budget) || 0;
         const deals = Number(row.deals) || 0;
-        const h = Math.max(2, (budget / maxBudget) * 145);
+        const h = Math.max(2, (deals / maxDeals) * 145);
         const y = bottom - h;
-        const pointY = bottom - (deals / maxDeals) * 170;
-        points.push(`${x + barW / 2},${pointY}`);
+        if (hasField(row, "leads")) {
+          const pointY = bottom - ((Number(row.leads) || 0) / maxLeads) * 170;
+          leadPoints.push(`${x + barW / 2},${pointY}`);
+        }
         return `
           <g>
             <rect x="${x}" y="${y}" width="${barW}" height="${h}" rx="5" fill="#b9dafc"></rect>
             <text x="${x + barW / 2}" y="${bottom + 18}" text-anchor="middle" class="week-label">${shortWeek(row.week)}</text>
-            <text x="${x + barW / 2}" y="${y - 6}" text-anchor="middle" class="week-money">${budget ? money(budget).replace(" ₽", "") : "0"}</text>
+            <text x="${x + barW / 2}" y="${y - 6}" text-anchor="middle" class="week-money">${number(deals)}</text>
           </g>
         `;
       })
@@ -1812,12 +1981,13 @@ window.ARCHILOFT_AD_DATA = {
 
     const dots = weeks
       .map((row, index) => {
+        if (!hasField(row, "leads")) return "";
         const x = left + index * (barW + barGap) + barW / 2;
-        const y = bottom - ((Number(row.deals) || 0) / maxDeals) * 170;
+        const y = bottom - ((Number(row.leads) || 0) / maxLeads) * 170;
         return `
           <g>
             <circle cx="${x}" cy="${y}" r="4.5" fill="#f28a45"></circle>
-            <text x="${x}" y="${y - 10}" text-anchor="middle" class="week-leads">${number(row.deals)}</text>
+            <text x="${x}" y="${y - 10}" text-anchor="middle" class="week-leads">${number(row.leads)}</text>
           </g>
         `;
       })
@@ -1833,12 +2003,11 @@ window.ARCHILOFT_AD_DATA = {
         </style>
         <line x1="${left - 10}" y1="${bottom}" x2="${width - 16}" y2="${bottom}" stroke="#e7eaf0"></line>
         ${bars}
-        <polyline points="${points.join(" ")}" fill="none" stroke="#f28a45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>
+        ${leadPoints.length ? `<polyline points="${leadPoints.join(" ")}" fill="none" stroke="#f28a45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>` : ""}
         ${dots}
         <rect x="${left}" y="16" width="24" height="10" rx="3" fill="#b9dafc"></rect>
-        <text x="${left + 34}" y="26" class="week-legend">Потенциал CRM, ₽</text>
-        <circle cx="${left + 172}" cy="21" r="5" fill="#f28a45"></circle>
-        <text x="${left + 184}" y="26" class="week-legend">CRM-сделки</text>
+        <text x="${left + 34}" y="26" class="week-legend">CRM-сделки</text>
+        ${leadPoints.length ? `<circle cx="${left + 138}" cy="21" r="5" fill="#f28a45"></circle><text x="${left + 150}" y="26" class="week-legend">Лиды</text>` : ""}
       </svg>
     `;
   }
@@ -1850,11 +2019,9 @@ window.ARCHILOFT_AD_DATA = {
         (row) => `
           <tr>
             <td>${row.week}</td>
+            <td>${displayNumber(row, "leads")}</td>
             <td>${number(row.deals)}</td>
-            <td>${number(row.inWork)}</td>
-            <td>${number(row.closed)}</td>
-            <td>${number(row.realized)}</td>
-            <td>${money(row.budget)}</td>
+            <td>${displayMoney(row, "spend")}</td>
             <td>${row.topSource} · ${number(row.topDeals)}</td>
           </tr>
         `
@@ -1862,20 +2029,49 @@ window.ARCHILOFT_AD_DATA = {
       .join("");
   }
 
-  function renderFreeSourceTable(channels) {
+  function renderFreeSourceTable(channels, isHistoric) {
     if (!els.freeSourceTable) return;
-    els.freeSourceTable.innerHTML = channels
-      .map(
-        (row) => `
-          <tr>
-            <td>${row.source}</td>
-            <td>${number(row.deals)}</td>
-            <td>${number(row.inWork)}</td>
-            <td>${number(row.closed)}</td>
-            <td>${number(row.realized)}</td>
-            <td>${money(row.budget)}</td>
-          </tr>
+    const header = document.querySelector(".free-source-table thead tr");
+    if (header) {
+      header.innerHTML = isHistoric
+        ? `
+          <th>Источник</th>
+          <th>CRM-сделки</th>
+          <th>В работе</th>
+          <th>Закрыто</th>
+          <th>Реализовано</th>
+          <th>Потенциал</th>
         `
+        : `
+          <th>Неделя</th>
+          <th>Источник</th>
+          <th>Лиды</th>
+          <th>CRM-сделки</th>
+          <th>Расход</th>
+        `;
+    }
+    els.freeSourceTable.innerHTML = channels
+      .map((row) =>
+        isHistoric
+          ? `
+            <tr>
+              <td>${row.source}</td>
+              <td>${number(row.deals)}</td>
+              <td>${number(row.inWork)}</td>
+              <td>${number(row.closed)}</td>
+              <td>${number(row.realized)}</td>
+              <td>${money(row.budget)}</td>
+            </tr>
+          `
+          : `
+            <tr>
+              <td>${row.week}</td>
+              <td>${row.source}</td>
+              <td>${number(row.leads)}</td>
+              <td>${number(row.deals)}</td>
+              <td>${money(row.spend)}</td>
+            </tr>
+          `
       )
       .join("");
   }
