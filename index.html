@@ -591,7 +591,7 @@ tr:last-child td {
       </nav>
       <section class="side-panel">
         <span class="side-panel__label">Период</span>
-        <strong id="periodLabel">Апрель - 15 июля 2026</strong>
+        <strong id="periodLabel">Апрель - 22 июля 2026</strong>
       </section>
       <section class="side-panel side-panel--accent">
         <span class="side-panel__label">Источник</span>
@@ -605,16 +605,16 @@ tr:last-child td {
         <div>
           <p class="eyebrow">ArchiLoft · реклама</p>
           <h1>Дашборд рекламы и сравнений</h1>
-          <p class="subtitle">Июль 01-15: расход рекламы, факт оплат, сделки и бесплатные источники по неделям.</p>
+          <p class="subtitle">Июль 01-22: расход рекламы, факт оплат, сделки и бесплатные источники по неделям.</p>
         </div>
         <div class="controls" aria-label="Фильтры">
           <label class="control">
             <span>Период</span>
             <select id="periodFilter">
-              <option value="all">Апрель - 15 июля</option>
+              <option value="all">Апрель - 22 июля</option>
               <option value="may">Май</option>
               <option value="june">Июнь</option>
-              <option value="july" selected>Июль 01-15</option>
+              <option value="july" selected>Июль 01-22</option>
             </select>
           </label>
           <label class="control control--number">
@@ -725,7 +725,7 @@ tr:last-child td {
             <h2>Платная реклама по неделям</h2>
             <p>Июль: расход CPC, факт оплат, CRM-лиды и потенциальный бюджет.</p>
           </div>
-          <span id="weeklyBadge" class="badge">2 недели</span>
+          <span id="weeklyBadge" class="badge">3 недели</span>
         </div>
         <div class="weekly-layout">
           <div>
@@ -755,9 +755,9 @@ tr:last-child td {
         <div class="panel__header">
           <div>
             <h2>Бесплатные источники по неделям</h2>
-            <p>Июль: лиды, CRM-сделки и расход 0 ₽ по второй вкладке отчета.</p>
+            <p>Июль: CRM-лиды, потенциал и факт оплат без рекламного расхода.</p>
           </div>
-          <span id="freeWeeklyBadge" class="badge">2 недели</span>
+          <span id="freeWeeklyBadge" class="badge">3 недели</span>
         </div>
         <div class="weekly-layout">
           <div>
@@ -769,9 +769,9 @@ tr:last-child td {
               <thead>
                 <tr>
                   <th>Неделя</th>
-                  <th>Лиды</th>
-                  <th>CRM-сделки</th>
-                  <th>Расход</th>
+                  <th>CRM-лиды</th>
+                  <th>Потенциал</th>
+                  <th>Факт</th>
                   <th>Топ источник</th>
                 </tr>
               </thead>
@@ -785,9 +785,9 @@ tr:last-child td {
               <tr>
                 <th>Неделя</th>
                 <th>Источник</th>
-                <th>Лиды</th>
-                <th>CRM-сделки</th>
-                <th>Расход</th>
+                <th>CRM-лиды</th>
+                <th>Потенциал</th>
+                <th>Факт</th>
               </tr>
             </thead>
             <tbody id="freeSourceTable"></tbody>
@@ -830,544 +830,965 @@ tr:last-child td {
 
     <script>
 window.ARCHILOFT_AD_DATA = {
-  brand: "ARCHILOFT",
-  reportTitle: "Дашборд рекламы и сравнений",
-  sourceNote: "Июль обновлен по файлу «Реклама по неделям .xlsx», лист «Реклама по неделям». Для платной рекламы показаны расход CPC, CRM-лиды, потенциальный бюджет и факт оплат. Для бесплатных источников в листе есть лиды, сделки и расход 0 ₽.",
-  allPeriodLabel: "Апрель - 15 июля",
-  compareBadge: "май-июль 15.07",
-  promoSpendTotal: 517842.84,
-  promoSpendLabel: "апрель - 15 июля 2026",
-  promoSpendMeta: "Апр-июн: 465 000 ₽; июль 01-15: 52 843 ₽",
-  promoSpendMayJune: 310000,
-  promoSpendBeforeMay: 155000,
-  weeklySourceNote: "",
-  freeSourceNote: "",
-  weeks: [
+  "brand": "ARCHILOFT",
+  "reportTitle": "Дашборд рекламы и сравнений",
+  "sourceNote": "Данные обновлены по отчету «Отчет 16-22 июля .xlsx». Платная реклама взята из блока «ПЛАТНЫЕ ИСТОЧНИКИ ПО НЕДЕЛЯМ», бесплатные источники — из блока «БЕСПЛАТНЫЕ ИСТОЧНИКИ». Строка «Кирилл» в платном блоке нулевая и не включена в CPC-итоги; строка «Спам» ниже ИТОГО исключена из бесплатных итогов.",
+  "allPeriodLabel": "Апрель - 22 июля",
+  "compareBadge": "май-июль 22.07",
+  "promoSpendTotal": 544362,
+  "promoSpendLabel": "апрель - 22 июля 2026",
+  "promoSpendMeta": "По отчету: 544 362 ₽ всего; июль CPC по неделям: 76 803 ₽",
+  "promoSpendMayJune": 310000,
+  "promoSpendBeforeMay": 155000,
+  "weeklySourceNote": "",
+  "freeSourceNote": "",
+  "weeks": [
     {
-      week: "01.05–08.05",
-      spend: 35001,
-      leads: 0,
-      crmBudget: 0,
-      realized: 0,
-      actualRevenue: 0,
-      cpl: 0
+      "week": "01.05–08.05",
+      "spend": 35001,
+      "leads": 0,
+      "crmBudget": 0,
+      "realized": 0,
+      "actualRevenue": 0,
+      "cpl": 0
     },
     {
-      week: "08.05–15.05",
-      spend: 17270.49,
-      leads: 0,
-      crmBudget: 0,
-      realized: 0,
-      actualRevenue: 0,
-      cpl: 0
+      "week": "08.05–15.05",
+      "spend": 17270.49,
+      "leads": 0,
+      "crmBudget": 0,
+      "realized": 0,
+      "actualRevenue": 0,
+      "cpl": 0
     },
     {
-      week: "15.05–22.05",
-      spend: 30919.17,
-      leads: 3,
-      crmBudget: 440000,
-      realized: 0,
-      actualRevenue: 0,
-      cpl: 10306.39
+      "week": "15.05–22.05",
+      "spend": 30919.17,
+      "leads": 3,
+      "crmBudget": 440000,
+      "realized": 0,
+      "actualRevenue": 0,
+      "cpl": 10306.39
     },
     {
-      week: "22.05–29.05",
-      spend: 30041.47,
-      leads: 6,
-      crmBudget: 400000,
-      realized: 0,
-      actualRevenue: 0,
-      cpl: 5006.91
+      "week": "22.05–29.05",
+      "spend": 30041.47,
+      "leads": 6,
+      "crmBudget": 400000,
+      "realized": 0,
+      "actualRevenue": 0,
+      "cpl": 5006.91
     },
     {
-      week: "29.05–05.06",
-      spend: 27313.21,
-      leads: 7,
-      crmBudget: 100000,
-      realized: 0,
-      actualRevenue: 0,
-      cpl: 3901.89
+      "week": "29.05–05.06",
+      "spend": 27313.21,
+      "leads": 7,
+      "crmBudget": 100000,
+      "realized": 0,
+      "actualRevenue": 0,
+      "cpl": 3901.89
     },
     {
-      week: "05.06–12.06",
-      spend: 16977.34,
-      leads: 6,
-      crmBudget: 1300000,
-      realized: 0,
-      actualRevenue: 0,
-      cpl: 2829.56
+      "week": "05.06–12.06",
+      "spend": 16977.34,
+      "leads": 6,
+      "crmBudget": 1300000,
+      "realized": 0,
+      "actualRevenue": 0,
+      "cpl": 2829.56
     },
     {
-      week: "12.06–19.06",
-      spend: 23188,
-      leads: 8,
-      crmBudget: 1470000,
-      realized: 0,
-      actualRevenue: 0,
-      cpl: 2898.5
+      "week": "12.06–19.06",
+      "spend": 23188,
+      "leads": 8,
+      "crmBudget": 1470000,
+      "realized": 0,
+      "actualRevenue": 0,
+      "cpl": 2898.5
     },
     {
-      week: "19.06–26.06",
-      spend: 13551.63,
-      leads: 2,
-      crmBudget: 190000,
-      realized: 0,
-      actualRevenue: 0,
-      cpl: 6775.82
+      "week": "19.06–26.06",
+      "spend": 13551.63,
+      "leads": 2,
+      "crmBudget": 190000,
+      "realized": 0,
+      "actualRevenue": 0,
+      "cpl": 6775.81
     },
     {
-      week: "26.06–03.07",
-      spend: 13296.97,
-      leads: 4,
-      crmBudget: 830000,
-      realized: 0,
-      actualRevenue: 0,
-      cpl: 3324.24
+      "week": "26.06–03.07",
+      "spend": 13296.97,
+      "leads": 4,
+      "crmBudget": 830000,
+      "realized": 0,
+      "actualRevenue": 0,
+      "cpl": 3324.24
     },
     {
-      week: "01.07–08.07",
-      spend: 18685.92,
-      leads: 4,
-      crmBudget: 640000,
-      realized: 0,
-      actualRevenue: 0,
-      cpl: 4671.48
+      "week": "01.07–08.07",
+      "spend": 18685.92,
+      "leads": 4,
+      "crmBudget": 640000,
+      "realized": 0,
+      "actualRevenue": 0,
+      "cpl": 4671.48
     },
     {
-      week: "08.07–15.07",
-      spend: 34156.92,
-      leads: 4,
-      crmBudget: 780000,
-      realized: 0,
-      actualRevenue: 0,
-      cpl: 8539.23
+      "week": "08.07–15.07",
+      "spend": 34156.92,
+      "leads": 4,
+      "crmBudget": 780000,
+      "realized": 0,
+      "actualRevenue": 0,
+      "cpl": 8539.23
+    },
+    {
+      "week": "16.07–22.07",
+      "spend": 23960.03,
+      "leads": 2,
+      "crmBudget": 430000,
+      "realized": 0,
+      "actualRevenue": 0,
+      "cpl": 11980.01
     }
   ],
-  freeWeeks: [
+  "freeWeeks": [
     {
-      week: "01.05–08.05",
-      deals: 18,
-      inWork: 0,
-      closed: 18,
-      realized: 0,
-      budget: 2780000,
-      topSource: "Органика",
-      topDeals: 7
+      "week": "01.05–08.05",
+      "leads": 18,
+      "deals": 18,
+      "inWork": 0,
+      "closed": 18,
+      "realized": 0,
+      "budget": 2780000,
+      "actualRevenue": 0,
+      "spend": 0,
+      "topSource": "Органика",
+      "topDeals": 7
     },
     {
-      week: "08.05–15.05",
-      deals: 20,
-      inWork: 1,
-      closed: 19,
-      realized: 0,
-      budget: 2110000,
-      topSource: "Лид не найден / не указан",
-      topDeals: 10
+      "week": "08.05–15.05",
+      "leads": 20,
+      "deals": 20,
+      "inWork": 1,
+      "closed": 19,
+      "realized": 0,
+      "budget": 2110000,
+      "actualRevenue": 0,
+      "spend": 0,
+      "topSource": "Лид не найден / не указан",
+      "topDeals": 10
     },
     {
-      week: "15.05–22.05",
-      deals: 11,
-      inWork: 0,
-      closed: 11,
-      realized: 0,
-      budget: 1640000,
-      topSource: "Соцсети / Telegram",
-      topDeals: 4
+      "week": "15.05–22.05",
+      "leads": 11,
+      "deals": 11,
+      "inWork": 0,
+      "closed": 11,
+      "realized": 0,
+      "budget": 1640000,
+      "actualRevenue": 0,
+      "spend": 0,
+      "topSource": "Соцсети / Telegram",
+      "topDeals": 4
     },
     {
-      week: "22.05–29.05",
-      deals: 20,
-      inWork: 2,
-      closed: 17,
-      realized: 1,
-      budget: 2990000,
-      topSource: "Соцсети / Telegram",
-      topDeals: 6
+      "week": "22.05–29.05",
+      "leads": 20,
+      "deals": 20,
+      "inWork": 2,
+      "closed": 17,
+      "realized": 1,
+      "budget": 2990000,
+      "actualRevenue": 590000,
+      "spend": 0,
+      "topSource": "Соцсети / Telegram",
+      "topDeals": 6
     },
     {
-      week: "29.05–05.06",
-      deals: 22,
-      inWork: 2,
-      closed: 20,
-      realized: 0,
-      budget: 3280480,
-      topSource: "Уже обращались",
-      topDeals: 5
+      "week": "29.05–05.06",
+      "leads": 22,
+      "deals": 22,
+      "inWork": 2,
+      "closed": 20,
+      "realized": 0,
+      "budget": 3280480,
+      "actualRevenue": 0,
+      "spend": 0,
+      "topSource": "Уже знали",
+      "topDeals": 5
     },
     {
-      week: "05.06–12.06",
-      deals: 17,
-      inWork: 1,
-      closed: 16,
-      realized: 0,
-      budget: 3440000,
-      topSource: "Соцсети / Telegram",
-      topDeals: 4
+      "week": "05.06–12.06",
+      "leads": 17,
+      "deals": 17,
+      "inWork": 1,
+      "closed": 16,
+      "realized": 0,
+      "budget": 3440000,
+      "actualRevenue": 0,
+      "spend": 0,
+      "topSource": "Соцсети / Telegram",
+      "topDeals": 4
     },
     {
-      week: "12.06–19.06",
-      deals: 28,
-      inWork: 2,
-      closed: 26,
-      realized: 0,
-      budget: 5090000,
-      topSource: "Лид не найден / не указан",
-      topDeals: 11
+      "week": "12.06–19.06",
+      "leads": 28,
+      "deals": 28,
+      "inWork": 2,
+      "closed": 26,
+      "realized": 0,
+      "budget": 5090000,
+      "actualRevenue": 0,
+      "spend": 0,
+      "topSource": "Лид не найден / не указан",
+      "topDeals": 11
     },
     {
-      week: "19.06–26.06",
-      deals: 27,
-      inWork: 9,
-      closed: 18,
-      realized: 0,
-      budget: 6600000,
-      topSource: "Лид не найден / не указан",
-      topDeals: 7
+      "week": "19.06–26.06",
+      "leads": 27,
+      "deals": 27,
+      "inWork": 9,
+      "closed": 18,
+      "realized": 0,
+      "budget": 6600000,
+      "actualRevenue": 0,
+      "spend": 0,
+      "topSource": "Лид не найден / не указан",
+      "topDeals": 7
     },
     {
-      week: "26.06–03.07",
-      deals: 14,
-      inWork: 6,
-      closed: 8,
-      realized: 0,
-      budget: 4080000,
-      topSource: "Органика",
-      topDeals: 4
+      "week": "26.06–03.07",
+      "leads": 14,
+      "deals": 14,
+      "inWork": 6,
+      "closed": 8,
+      "realized": 0,
+      "budget": 4080000,
+      "actualRevenue": 0,
+      "spend": 0,
+      "topSource": "Органика",
+      "topDeals": 4
     },
     {
-      week: "01.07–08.07",
-      leads: 10,
-      deals: 41,
-      spend: 0,
-      topSource: "Лид не указан",
-      topDeals: 34
+      "week": "01.07–08.07",
+      "leads": 35,
+      "deals": 35,
+      "inWork": 21,
+      "closed": 14,
+      "realized": 0,
+      "budget": 7450000,
+      "actualRevenue": 0,
+      "spend": 0,
+      "topSource": "Лид не найден / не указан",
+      "topDeals": 14
     },
     {
-      week: "08.07–15.07",
-      leads: 48,
-      deals: 28,
-      spend: 0,
-      topSource: "Органика",
-      topDeals: 6
+      "week": "08.07–15.07",
+      "leads": 41,
+      "deals": 41,
+      "inWork": 32,
+      "closed": 9,
+      "realized": 0,
+      "budget": 8070000,
+      "actualRevenue": 0,
+      "spend": 0,
+      "topSource": "Лид не найден / не указан",
+      "topDeals": 7
+    },
+    {
+      "week": "16.07–22.07",
+      "leads": 31,
+      "deals": 31,
+      "inWork": 22,
+      "closed": 8,
+      "realized": 1,
+      "budget": 6360000,
+      "actualRevenue": 236000,
+      "spend": 0,
+      "topSource": "Почта",
+      "topDeals": 5
     }
   ],
-  freeChannels: [
+  "freeChannels": [
     {
-      week: "01.07–08.07",
-      source: "Органика",
-      leads: 4,
-      deals: 3,
-      spend: 0
+      "month": "Июль 2026",
+      "week": "01.07–08.07",
+      "source": "Bash Today",
+      "leads": 1,
+      "deals": 1,
+      "inWork": 0,
+      "closed": 1,
+      "realized": 0,
+      "budget": 290000,
+      "actualRevenue": 0,
+      "spend": 0
     },
     {
-      week: "01.07–08.07",
-      source: "Referral",
-      leads: 1,
-      deals: 1,
-      spend: 0
+      "month": "Июль 2026",
+      "week": "01.07–08.07",
+      "source": "Revel Time / SpeedRent",
+      "leads": 1,
+      "deals": 1,
+      "inWork": 0,
+      "closed": 1,
+      "realized": 0,
+      "budget": 200000,
+      "actualRevenue": 0,
+      "spend": 0
     },
     {
-      week: "01.07–08.07",
-      source: "Прямой / none",
-      leads: 5,
-      deals: 3,
-      spend: 0
+      "month": "Июль 2026",
+      "week": "01.07–08.07",
+      "source": "Агрегаторы",
+      "leads": 1,
+      "deals": 1,
+      "inWork": 1,
+      "closed": 0,
+      "realized": 0,
+      "budget": 200000,
+      "actualRevenue": 0,
+      "spend": 0
     },
     {
-      week: "01.07–08.07",
-      source: "Лид не указан",
-      leads: 0,
-      deals: 34,
-      spend: 0
+      "month": "Июль 2026",
+      "week": "01.07–08.07",
+      "source": "Ищу площадку / холодный поиск",
+      "leads": 1,
+      "deals": 1,
+      "inWork": 0,
+      "closed": 1,
+      "realized": 0,
+      "budget": 340000,
+      "actualRevenue": 0,
+      "spend": 0
     },
     {
-      week: "08.07–15.07",
-      source: "Органика",
-      leads: 7,
-      deals: 6,
-      spend: 0
+      "month": "Июль 2026",
+      "week": "01.07–08.07",
+      "source": "Лид не найден / не указан",
+      "leads": 14,
+      "deals": 14,
+      "inWork": 9,
+      "closed": 5,
+      "realized": 0,
+      "budget": 2430000,
+      "actualRevenue": 0,
+      "spend": 0
     },
     {
-      week: "08.07–15.07",
-      source: "Агрегатор",
-      leads: 2,
-      deals: 1,
-      spend: 0
+      "month": "Июль 2026",
+      "week": "01.07–08.07",
+      "source": "Партнеры / сотрудничество",
+      "leads": 1,
+      "deals": 1,
+      "inWork": 0,
+      "closed": 1,
+      "realized": 0,
+      "budget": 0,
+      "actualRevenue": 0,
+      "spend": 0
     },
     {
-      week: "08.07–15.07",
-      source: "Почта",
-      leads: 4,
-      deals: 4,
-      spend: 0
+      "month": "Июль 2026",
+      "week": "01.07–08.07",
+      "source": "Почта",
+      "leads": 6,
+      "deals": 6,
+      "inWork": 4,
+      "closed": 2,
+      "realized": 0,
+      "budget": 1170000,
+      "actualRevenue": 0,
+      "spend": 0
     },
     {
-      week: "08.07–15.07",
-      source: "Referral",
-      leads: 2,
-      deals: 1,
-      spend: 0
+      "month": "Июль 2026",
+      "week": "01.07–08.07",
+      "source": "Соцсети / Telegram",
+      "leads": 4,
+      "deals": 4,
+      "inWork": 3,
+      "closed": 1,
+      "realized": 0,
+      "budget": 870000,
+      "actualRevenue": 0,
+      "spend": 0
     },
     {
-      week: "08.07–15.07",
-      source: "Партнерство",
-      leads: 1,
-      deals: 0,
-      spend: 0
+      "month": "Июль 2026",
+      "week": "01.07–08.07",
+      "source": "Уже знали",
+      "leads": 3,
+      "deals": 3,
+      "inWork": 2,
+      "closed": 1,
+      "realized": 0,
+      "budget": 820000,
+      "actualRevenue": 0,
+      "spend": 0
     },
     {
-      week: "08.07–15.07",
-      source: "Спам",
-      leads: 8,
-      deals: 0,
-      spend: 0
+      "month": "Июль 2026",
+      "week": "01.07–08.07",
+      "source": "Холодная база / актив",
+      "leads": 3,
+      "deals": 3,
+      "inWork": 2,
+      "closed": 1,
+      "realized": 0,
+      "budget": 1130000,
+      "actualRevenue": 0,
+      "spend": 0
     },
     {
-      week: "08.07–15.07",
-      source: "Уже знали",
-      leads: 6,
-      deals: 5,
-      spend: 0
+      "month": "Июль 2026",
+      "week": "08.07–15.07",
+      "source": "Bash Today",
+      "leads": 1,
+      "deals": 1,
+      "inWork": 1,
+      "closed": 0,
+      "realized": 0,
+      "budget": 230000,
+      "actualRevenue": 0,
+      "spend": 0
     },
     {
-      week: "08.07–15.07",
-      source: "Прямой / none",
-      leads: 3,
-      deals: 2,
-      spend: 0
+      "month": "Июль 2026",
+      "week": "08.07–15.07",
+      "source": "Referral / другие сайты",
+      "leads": 1,
+      "deals": 1,
+      "inWork": 1,
+      "closed": 0,
+      "realized": 0,
+      "budget": 0,
+      "actualRevenue": 0,
+      "spend": 0
     },
     {
-      week: "08.07–15.07",
-      source: "Revel time",
-      leads: 1,
-      deals: 0,
-      spend: 0
+      "month": "Июль 2026",
+      "week": "08.07–15.07",
+      "source": "Revel Time / SpeedRent",
+      "leads": 1,
+      "deals": 1,
+      "inWork": 0,
+      "closed": 1,
+      "realized": 0,
+      "budget": 200000,
+      "actualRevenue": 0,
+      "spend": 0
     },
     {
-      week: "08.07–15.07",
-      source: "Bash today",
-      leads: 1,
-      deals: 1,
-      spend: 0
+      "month": "Июль 2026",
+      "week": "08.07–15.07",
+      "source": "Агрегаторы",
+      "leads": 2,
+      "deals": 2,
+      "inWork": 1,
+      "closed": 1,
+      "realized": 0,
+      "budget": 400000,
+      "actualRevenue": 0,
+      "spend": 0
     },
     {
-      week: "08.07–15.07",
-      source: "Манго звонок",
-      leads: 7,
-      deals: 3,
-      spend: 0
+      "month": "Июль 2026",
+      "week": "08.07–15.07",
+      "source": "Лид не найден / не указан",
+      "leads": 7,
+      "deals": 7,
+      "inWork": 4,
+      "closed": 3,
+      "realized": 0,
+      "budget": 1230000,
+      "actualRevenue": 0,
+      "spend": 0
     },
     {
-      week: "08.07–15.07",
-      source: "Телеграм заявки",
-      leads: 6,
-      deals: 5,
-      spend: 0
+      "month": "Июль 2026",
+      "week": "08.07–15.07",
+      "source": "Органика",
+      "leads": 7,
+      "deals": 7,
+      "inWork": 6,
+      "closed": 1,
+      "realized": 0,
+      "budget": 1500000,
+      "actualRevenue": 0,
+      "spend": 0
+    },
+    {
+      "month": "Июль 2026",
+      "week": "08.07–15.07",
+      "source": "Партнеры / сотрудничество",
+      "leads": 1,
+      "deals": 1,
+      "inWork": 0,
+      "closed": 1,
+      "realized": 0,
+      "budget": 0,
+      "actualRevenue": 0,
+      "spend": 0
+    },
+    {
+      "month": "Июль 2026",
+      "week": "08.07–15.07",
+      "source": "Почта",
+      "leads": 4,
+      "deals": 4,
+      "inWork": 4,
+      "closed": 0,
+      "realized": 0,
+      "budget": 1020000,
+      "actualRevenue": 0,
+      "spend": 0
+    },
+    {
+      "month": "Июль 2026",
+      "week": "08.07–15.07",
+      "source": "Прямой брендовый заход",
+      "leads": 2,
+      "deals": 2,
+      "inWork": 2,
+      "closed": 0,
+      "realized": 0,
+      "budget": 440000,
+      "actualRevenue": 0,
+      "spend": 0
+    },
+    {
+      "month": "Июль 2026",
+      "week": "08.07–15.07",
+      "source": "Рекомендации / рефералы",
+      "leads": 2,
+      "deals": 2,
+      "inWork": 2,
+      "closed": 0,
+      "realized": 0,
+      "budget": 400000,
+      "actualRevenue": 0,
+      "spend": 0
+    },
+    {
+      "month": "Июль 2026",
+      "week": "08.07–15.07",
+      "source": "Соцсети / Telegram",
+      "leads": 6,
+      "deals": 6,
+      "inWork": 5,
+      "closed": 1,
+      "realized": 0,
+      "budget": 1250000,
+      "actualRevenue": 0,
+      "spend": 0
+    },
+    {
+      "month": "Июль 2026",
+      "week": "08.07–15.07",
+      "source": "Уже знали",
+      "leads": 6,
+      "deals": 6,
+      "inWork": 5,
+      "closed": 1,
+      "realized": 0,
+      "budget": 1200000,
+      "actualRevenue": 0,
+      "spend": 0
+    },
+    {
+      "month": "Июль 2026",
+      "week": "08.07–15.07",
+      "source": "Яндекс карты",
+      "leads": 1,
+      "deals": 1,
+      "inWork": 1,
+      "closed": 0,
+      "realized": 0,
+      "budget": 200000,
+      "actualRevenue": 0,
+      "spend": 0
+    },
+    {
+      "month": "Июль 2026",
+      "week": "16.07–22.07",
+      "source": "Bash Today",
+      "leads": 1,
+      "deals": 1,
+      "inWork": 1,
+      "closed": 0,
+      "realized": 0,
+      "budget": 290000,
+      "actualRevenue": 0,
+      "spend": 0
+    },
+    {
+      "month": "Июль 2026",
+      "week": "16.07–22.07",
+      "source": "другие сайты",
+      "leads": 1,
+      "deals": 1,
+      "inWork": 1,
+      "closed": 0,
+      "realized": 0,
+      "budget": 240000,
+      "actualRevenue": 0,
+      "spend": 0
+    },
+    {
+      "month": "Июль 2026",
+      "week": "16.07–22.07",
+      "source": "Агрегаторы",
+      "leads": 1,
+      "deals": 1,
+      "inWork": 1,
+      "closed": 0,
+      "realized": 0,
+      "budget": 290000,
+      "actualRevenue": 0,
+      "spend": 0
+    },
+    {
+      "month": "Июль 2026",
+      "week": "16.07–22.07",
+      "source": "Ищу площадку",
+      "leads": 1,
+      "deals": 1,
+      "inWork": 0,
+      "closed": 1,
+      "realized": 0,
+      "budget": 0,
+      "actualRevenue": 0,
+      "spend": 0
+    },
+    {
+      "month": "Июль 2026",
+      "week": "16.07–22.07",
+      "source": "Лид не найден / не указан",
+      "leads": 1,
+      "deals": 1,
+      "inWork": 1,
+      "closed": 0,
+      "realized": 0,
+      "budget": 240000,
+      "actualRevenue": 0,
+      "spend": 0
+    },
+    {
+      "month": "Июль 2026",
+      "week": "16.07–22.07",
+      "source": "Манго звонок",
+      "leads": 1,
+      "deals": 1,
+      "inWork": 1,
+      "closed": 0,
+      "realized": 0,
+      "budget": 240000,
+      "actualRevenue": 0,
+      "spend": 0
+    },
+    {
+      "month": "Июль 2026",
+      "week": "16.07–22.07",
+      "source": "Органика",
+      "leads": 4,
+      "deals": 4,
+      "inWork": 4,
+      "closed": 0,
+      "realized": 0,
+      "budget": 1020000,
+      "actualRevenue": 0,
+      "spend": 0
+    },
+    {
+      "month": "Июль 2026",
+      "week": "16.07–22.07",
+      "source": "Почта",
+      "leads": 5,
+      "deals": 5,
+      "inWork": 3,
+      "closed": 2,
+      "realized": 0,
+      "budget": 1020000,
+      "actualRevenue": 0,
+      "spend": 0
+    },
+    {
+      "month": "Июль 2026",
+      "week": "16.07–22.07",
+      "source": "Прямой брендовый заход",
+      "leads": 3,
+      "deals": 3,
+      "inWork": 2,
+      "closed": 1,
+      "realized": 0,
+      "budget": 720000,
+      "actualRevenue": 0,
+      "spend": 0
+    },
+    {
+      "month": "Июль 2026",
+      "week": "16.07–22.07",
+      "source": "Telegram",
+      "leads": 5,
+      "deals": 5,
+      "inWork": 2,
+      "closed": 3,
+      "realized": 0,
+      "budget": 1160000,
+      "actualRevenue": 0,
+      "spend": 0
+    },
+    {
+      "month": "Июль 2026",
+      "week": "16.07–22.07",
+      "source": "Уже знали",
+      "leads": 5,
+      "deals": 5,
+      "inWork": 3,
+      "closed": 1,
+      "realized": 1,
+      "budget": 300000,
+      "actualRevenue": 236000,
+      "spend": 0
+    },
+    {
+      "month": "Июль 2026",
+      "week": "16.07–22.07",
+      "source": "Холодная база / актив",
+      "leads": 2,
+      "deals": 2,
+      "inWork": 2,
+      "closed": 0,
+      "realized": 0,
+      "budget": 600000,
+      "actualRevenue": 0,
+      "spend": 0
+    },
+    {
+      "month": "Июль 2026",
+      "week": "16.07–22.07",
+      "source": "Яндекс карты",
+      "leads": 1,
+      "deals": 1,
+      "inWork": 1,
+      "closed": 0,
+      "realized": 0,
+      "budget": 240000,
+      "actualRevenue": 0,
+      "spend": 0
     }
   ],
-  historicFreeChannels: [
+  "historicFreeChannels": [
     {
-      source: "Лид не найден / не указан",
-      deals: 138,
-      inWork: 21,
-      closed: 114,
-      realized: 3,
-      budget: 11980240
+      "source": "Лид не найден / не указан",
+      "leads": 73,
+      "deals": 73,
+      "inWork": 21,
+      "closed": 52,
+      "realized": 0,
+      "budget": 12220240,
+      "actualRevenue": 0
     },
     {
-      source: "Соцсети / Telegram",
-      deals: 72,
-      inWork: 12,
-      closed: 60,
-      realized: 0,
-      budget: 6860240
+      "source": "Органика",
+      "leads": 39,
+      "deals": 39,
+      "inWork": 12,
+      "closed": 27,
+      "realized": 0,
+      "budget": 10040000,
+      "actualRevenue": 0
     },
     {
-      source: "Органика",
-      deals: 35,
-      inWork: 8,
-      closed: 27,
-      realized: 0,
-      budget: 9020000
+      "source": "Соцсети / Telegram",
+      "leads": 48,
+      "deals": 48,
+      "inWork": 14,
+      "closed": 34,
+      "realized": 0,
+      "budget": 8020240,
+      "actualRevenue": 0
     },
     {
-      source: "Уже обращались",
-      deals: 28,
-      inWork: 9,
-      closed: 19,
-      realized: 0,
-      budget: 5120000
+      "source": "Уже знали",
+      "leads": 28,
+      "deals": 28,
+      "inWork": 12,
+      "closed": 15,
+      "realized": 1,
+      "budget": 6176000,
+      "actualRevenue": 236000
     },
     {
-      source: "Почта",
-      deals: 27,
-      inWork: 11,
-      closed: 16,
-      realized: 0,
-      budget: 4220000
+      "source": "Почта",
+      "leads": 26,
+      "deals": 26,
+      "inWork": 14,
+      "closed": 12,
+      "realized": 0,
+      "budget": 5240000,
+      "actualRevenue": 0
     },
     {
-      source: "Прямой брендовый заход",
-      deals: 18,
-      inWork: 3,
-      closed: 14,
-      realized: 1,
-      budget: 2950000
+      "source": "Прямой брендовый заход",
+      "leads": 21,
+      "deals": 21,
+      "inWork": 5,
+      "closed": 15,
+      "realized": 1,
+      "budget": 3670000,
+      "actualRevenue": 590000
     },
     {
-      source: "Рекомендации / рефералы",
-      deals: 14,
-      inWork: 3,
-      closed: 11,
-      realized: 0,
-      budget: 1670000
+      "source": "Холодная база / актив",
+      "leads": 5,
+      "deals": 5,
+      "inWork": 4,
+      "closed": 1,
+      "realized": 0,
+      "budget": 1730000,
+      "actualRevenue": 0
     },
     {
-      source: "Revel Time / SpeedRent",
-      deals: 6,
-      inWork: 0,
-      closed: 6,
-      realized: 0,
-      budget: 800000
+      "source": "Рекомендации / рефералы",
+      "leads": 11,
+      "deals": 11,
+      "inWork": 3,
+      "closed": 8,
+      "realized": 0,
+      "budget": 1670000,
+      "actualRevenue": 0
     },
     {
-      source: "Агрегаторы",
-      deals: 6,
-      inWork: 2,
-      closed: 4,
-      realized: 0,
-      budget: 600000
+      "source": "Агрегаторы",
+      "leads": 6,
+      "deals": 6,
+      "inWork": 3,
+      "closed": 3,
+      "realized": 0,
+      "budget": 1210000,
+      "actualRevenue": 0
     },
     {
-      source: "Ищу площадку / холодный поиск",
-      deals: 6,
-      inWork: 2,
-      closed: 4,
-      realized: 0,
-      budget: 1140000
+      "source": "Ищу площадку / холодный поиск",
+      "leads": 7,
+      "deals": 7,
+      "inWork": 2,
+      "closed": 5,
+      "realized": 0,
+      "budget": 1140000,
+      "actualRevenue": 0
     },
     {
-      source: "Вед Вед",
-      deals: 4,
-      inWork: 1,
-      closed: 3,
-      realized: 0,
-      budget: 600000
+      "source": "Bash Today",
+      "leads": 4,
+      "deals": 4,
+      "inWork": 2,
+      "closed": 2,
+      "realized": 0,
+      "budget": 1010000,
+      "actualRevenue": 0
     },
     {
-      source: "Bash Today",
-      deals: 3,
-      inWork: 1,
-      closed: 2,
-      realized: 0,
-      budget: 720000
+      "source": "Revel Time / SpeedRent",
+      "leads": 4,
+      "deals": 4,
+      "inWork": 0,
+      "closed": 4,
+      "realized": 0,
+      "budget": 800000,
+      "actualRevenue": 0
     },
     {
-      source: "Холодная база / актив",
-      deals: 3,
-      inWork: 2,
-      closed: 1,
-      realized: 0,
-      budget: 1130000
+      "source": "Вед Вед",
+      "leads": 4,
+      "deals": 4,
+      "inWork": 1,
+      "closed": 3,
+      "realized": 0,
+      "budget": 600000,
+      "actualRevenue": 0
     },
     {
-      source: "Агрегатор без уточнения",
-      deals: 2,
-      inWork: 0,
-      closed: 2,
-      realized: 0,
-      budget: 320000
+      "source": "Яндекс карты",
+      "leads": 2,
+      "deals": 2,
+      "inWork": 2,
+      "closed": 0,
+      "realized": 0,
+      "budget": 440000,
+      "actualRevenue": 0
     },
     {
-      source: "Партнеры / сотрудничество",
-      deals: 2,
-      inWork: 0,
-      closed: 2,
-      realized: 0,
-      budget: 0
-    },
-    {
-      source: "Referral / другие сайты",
-      deals: 1,
-      inWork: 1,
-      closed: 0,
-      realized: 0,
-      budget: 0
-    },
-    {
-      source: "Рассылка",
-      deals: 1,
-      inWork: 0,
-      closed: 1,
-      realized: 0,
-      budget: 200000
-    },
-    {
-      source: "Яндекс карты",
-      deals: 1,
-      inWork: 1,
-      closed: 0,
-      realized: 0,
-      budget: 200000
+      "source": "Referral / другие сайты",
+      "leads": 2,
+      "deals": 2,
+      "inWork": 2,
+      "closed": 0,
+      "realized": 0,
+      "budget": 240000,
+      "actualRevenue": 0
     }
   ],
-  months: [
+  "months": [
     {
-      id: "may",
-      month: "Май",
-      source: "Яндекс Директ / CPC",
-      provider: "Promo Group",
-      touchpoints: "Mango / звонок 7, Tilda / форма сайта 3, Ручной ввод CRM 1",
-      spend: 155000,
-      leads: 12,
-      deals: 12,
-      qualified: 12,
-      inWork: 0,
-      closed: 12,
-      calls: 8,
-      offers: 0,
-      realized: 0,
-      actualRevenue: 0,
-      ctRevenue: 0,
-      crmBudget: 1240000
+      "id": "may",
+      "month": "Май",
+      "source": "Яндекс Директ / CPC",
+      "provider": "Promo Group",
+      "touchpoints": "Mango / звонок 7, Tilda / форма сайта 3, Ручной ввод CRM 1",
+      "spend": 155000,
+      "leads": 12,
+      "deals": 12,
+      "qualified": 12,
+      "inWork": 0,
+      "closed": 12,
+      "calls": 8,
+      "offers": 0,
+      "realized": 0,
+      "actualRevenue": 0,
+      "ctRevenue": 0,
+      "crmBudget": 1240000
     },
     {
-      id: "june",
-      month: "Июнь",
-      source: "Яндекс Директ / CPC",
-      provider: "Promo Group",
-      touchpoints: "Mango / звонок 10, Tilda / форма сайта 5",
-      spend: 155000,
-      leads: 22,
-      deals: 22,
-      qualified: 22,
-      inWork: 5,
-      closed: 17,
-      calls: 10,
-      offers: 5,
-      realized: 0,
-      actualRevenue: 0,
-      ctRevenue: 0,
-      crmBudget: 4190000
+      "id": "june",
+      "month": "Июнь",
+      "source": "Яндекс Директ / CPC",
+      "provider": "Promo Group",
+      "touchpoints": "Mango / звонок 10, Tilda / форма сайта 5",
+      "spend": 155000,
+      "leads": 22,
+      "deals": 22,
+      "qualified": 22,
+      "inWork": 5,
+      "closed": 17,
+      "calls": 10,
+      "offers": 5,
+      "realized": 0,
+      "actualRevenue": 0,
+      "ctRevenue": 0,
+      "crmBudget": 4190000
     },
     {
-      id: "july",
-      month: "Июль 01-15",
-      source: "Яндекс Директ / CPC",
-      provider: "Promo Group",
-      touchpoints: "Calltouch / CPC 01-15 июля",
-      spend: 52842.84,
-      leads: 8,
-      deals: 8,
-      qualified: 8,
-      inWork: 4,
-      closed: 4,
-      calls: 0,
-      offers: 3,
-      realized: 0,
-      actualRevenue: 0,
-      ctRevenue: 0,
-      crmBudget: 1420000
+      "id": "july",
+      "month": "Июль 01-22",
+      "source": "Яндекс Директ / CPC",
+      "provider": "Promo Group",
+      "touchpoints": "Calltouch / CPC 01-22 июля",
+      "spend": 76802.87,
+      "leads": 10,
+      "deals": 10,
+      "qualified": 10,
+      "inWork": 4,
+      "closed": 4,
+      "calls": 0,
+      "offers": 3,
+      "realized": 0,
+      "actualRevenue": 0,
+      "ctRevenue": 0,
+      "crmBudget": 1850000
     }
   ]
 };
@@ -1375,7 +1796,7 @@ window.ARCHILOFT_AD_DATA = {
     </script>
     <script>
 (function () {
-  const STORAGE_KEY = "archiloft-ad-dashboard-v5";
+  const STORAGE_KEY = "archiloft-ad-dashboard-v6";
   const baseData = window.ARCHILOFT_AD_DATA;
   const editableFields = [
     ["month", "text"],
@@ -1523,6 +1944,15 @@ window.ARCHILOFT_AD_DATA = {
 
   function number(value) {
     return Math.round(Number(value) || 0).toLocaleString("ru-RU");
+  }
+
+  function compactMoney(value) {
+    const numeric = Number(value) || 0;
+    if (Math.abs(numeric) >= 1000000) {
+      return `${(numeric / 1000000).toLocaleString("ru-RU", { maximumFractionDigits: 1 })} млн`;
+    }
+    if (Math.abs(numeric) >= 1000) return `${Math.round(numeric / 1000).toLocaleString("ru-RU")} тыс`;
+    return number(numeric);
   }
 
   function percent(value, digits = 0) {
@@ -1912,7 +2342,11 @@ window.ARCHILOFT_AD_DATA = {
     const isJuly = selectedPeriod() === "july";
     const channels = isJuly ? baseData.freeChannels || [] : baseData.historicFreeChannels || baseData.freeChannels || [];
     const total = freeTotals(weeks);
-    const bestWeek = weeks.reduce((best, row) => (Number(row.deals) > Number(best.deals || 0) ? row : best), {});
+    const bestWeek = weeks.reduce((best, row) => {
+      const rowValue = hasField(row, "leads") ? Number(row.leads) || 0 : Number(row.deals) || 0;
+      const bestValue = hasField(best, "leads") ? Number(best.leads) || 0 : Number(best.deals) || 0;
+      return rowValue > bestValue ? row : best;
+    }, {});
 
     if (els.freeWeeklyBadge) els.freeWeeklyBadge.textContent = weeksLabel(weeks.length);
     if (els.freeWeeklyNote) els.freeWeeklyNote.textContent = baseData.freeSourceNote || "";
@@ -1925,11 +2359,11 @@ window.ARCHILOFT_AD_DATA = {
   function renderFreeSummary(total, bestWeek) {
     if (!els.freeWeeklySummary) return;
     const revenueValue = total.hasRevenue ? money(total.actualRevenue) : "не указан";
-    const leadsLabel = total.leadRows && total.leadRows < total.rows ? "Лиды июля" : "Лиды";
+    const leadsValue = total.leadRows ? number(total.leads) : number(total.deals);
     const items = [
-      ["Расход", total.spendRows ? money(total.spend) : "—"],
-      [leadsLabel, total.leadRows ? number(total.leads) : "—"],
-      ["CRM-сделки", number(total.deals)],
+      ["Расход", total.spendRows ? money(total.spend) : money(0)],
+      ["CRM-лиды", leadsValue],
+      ["Потенциал CRM", money(total.budget)],
       ["Факт оплат", revenueValue]
     ];
 
@@ -1947,8 +2381,8 @@ window.ARCHILOFT_AD_DATA = {
     if (bestWeek.week) {
       els.freeWeeklySummary.innerHTML += `
         <div class="weekly-stat">
-          <span>Больше всего сделок</span>
-          <strong>${bestWeek.week} · ${number(bestWeek.deals)}</strong>
+          <span>Больше всего лидов</span>
+          <strong>${bestWeek.week} · ${hasField(bestWeek, "leads") ? number(bestWeek.leads) : number(bestWeek.deals)}</strong>
         </div>
       `;
     }
@@ -1962,26 +2396,26 @@ window.ARCHILOFT_AD_DATA = {
     const bottom = 230;
     const barGap = 12;
     const barW = Math.max(20, (width - left - 34 - barGap * weeks.length) / Math.max(weeks.length, 1));
-    const leadWeeks = weeks.filter((row) => hasField(row, "leads"));
-    const maxLeads = Math.max(...leadWeeks.map((row) => Number(row.leads) || 0), 1);
-    const maxDeals = Math.max(...weeks.map((row) => Number(row.deals) || 0), 1);
-    const leadPoints = [];
+    const hasBudget = weeks.some((row) => hasField(row, "budget") && Number(row.budget));
+    const barKey = hasBudget ? "budget" : "deals";
+    const lineKey = weeks.some((row) => hasField(row, "leads")) ? "leads" : "deals";
+    const maxBar = Math.max(...weeks.map((row) => Number(row[barKey]) || 0), 1);
+    const maxLine = Math.max(...weeks.map((row) => Number(row[lineKey]) || 0), 1);
+    const linePoints = [];
 
     const bars = weeks
       .map((row, index) => {
         const x = left + index * (barW + barGap);
-        const deals = Number(row.deals) || 0;
-        const h = Math.max(2, (deals / maxDeals) * 145);
+        const barValue = Number(row[barKey]) || 0;
+        const h = Math.max(2, (barValue / maxBar) * 145);
         const y = bottom - h;
-        if (hasField(row, "leads")) {
-          const pointY = bottom - ((Number(row.leads) || 0) / maxLeads) * 170;
-          leadPoints.push(`${x + barW / 2},${pointY}`);
-        }
+        const pointY = bottom - ((Number(row[lineKey]) || 0) / maxLine) * 170;
+        linePoints.push(`${x + barW / 2},${pointY}`);
         return `
           <g>
             <rect x="${x}" y="${y}" width="${barW}" height="${h}" rx="5" fill="#b9dafc"></rect>
             <text x="${x + barW / 2}" y="${bottom + 18}" text-anchor="middle" class="week-label">${shortWeek(row.week)}</text>
-            <text x="${x + barW / 2}" y="${y - 6}" text-anchor="middle" class="week-money">${number(deals)}</text>
+            <text x="${x + barW / 2}" y="${y - 6}" text-anchor="middle" class="week-money">${hasBudget ? compactMoney(barValue) : number(barValue)}</text>
           </g>
         `;
       })
@@ -1989,13 +2423,12 @@ window.ARCHILOFT_AD_DATA = {
 
     const dots = weeks
       .map((row, index) => {
-        if (!hasField(row, "leads")) return "";
         const x = left + index * (barW + barGap) + barW / 2;
-        const y = bottom - ((Number(row.leads) || 0) / maxLeads) * 170;
+        const y = bottom - ((Number(row[lineKey]) || 0) / maxLine) * 170;
         return `
           <g>
             <circle cx="${x}" cy="${y}" r="4.5" fill="#f28a45"></circle>
-            <text x="${x}" y="${y - 10}" text-anchor="middle" class="week-leads">${number(row.leads)}</text>
+            <text x="${x}" y="${y - 10}" text-anchor="middle" class="week-leads">${number(row[lineKey])}</text>
           </g>
         `;
       })
@@ -2011,11 +2444,12 @@ window.ARCHILOFT_AD_DATA = {
         </style>
         <line x1="${left - 10}" y1="${bottom}" x2="${width - 16}" y2="${bottom}" stroke="#e7eaf0"></line>
         ${bars}
-        ${leadPoints.length ? `<polyline points="${leadPoints.join(" ")}" fill="none" stroke="#f28a45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>` : ""}
+        ${linePoints.length ? `<polyline points="${linePoints.join(" ")}" fill="none" stroke="#f28a45" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>` : ""}
         ${dots}
         <rect x="${left}" y="16" width="24" height="10" rx="3" fill="#b9dafc"></rect>
-        <text x="${left + 34}" y="26" class="week-legend">CRM-сделки</text>
-        ${leadPoints.length ? `<circle cx="${left + 138}" cy="21" r="5" fill="#f28a45"></circle><text x="${left + 150}" y="26" class="week-legend">Лиды</text>` : ""}
+        <text x="${left + 34}" y="26" class="week-legend">${hasBudget ? "Потенциал CRM, ₽" : "CRM-сделки"}</text>
+        <circle cx="${left + 178}" cy="21" r="5" fill="#f28a45"></circle>
+        <text x="${left + 190}" y="26" class="week-legend">${lineKey === "leads" ? "CRM-лиды" : "CRM-сделки"}</text>
       </svg>
     `;
   }
@@ -2028,9 +2462,9 @@ window.ARCHILOFT_AD_DATA = {
           <tr>
             <td>${row.week}</td>
             <td>${displayNumber(row, "leads")}</td>
-            <td>${number(row.deals)}</td>
-            <td>${displayMoney(row, "spend")}</td>
-            <td>${row.topSource} · ${number(row.topDeals)}</td>
+            <td>${displayMoney(row, "budget")}</td>
+            <td>${displayMoney(row, "actualRevenue")}</td>
+            <td>${row.topSource ? `${row.topSource} · ${number(row.topDeals)}` : "—"}</td>
           </tr>
         `
       )
@@ -2044,18 +2478,19 @@ window.ARCHILOFT_AD_DATA = {
       header.innerHTML = isHistoric
         ? `
           <th>Источник</th>
-          <th>CRM-сделки</th>
+          <th>CRM-лиды</th>
           <th>В работе</th>
           <th>Закрыто</th>
           <th>Реализовано</th>
           <th>Потенциал</th>
+          <th>Факт</th>
         `
         : `
           <th>Неделя</th>
           <th>Источник</th>
-          <th>Лиды</th>
-          <th>CRM-сделки</th>
-          <th>Расход</th>
+          <th>CRM-лиды</th>
+          <th>Потенциал</th>
+          <th>Факт</th>
         `;
     }
     els.freeSourceTable.innerHTML = channels
@@ -2064,11 +2499,12 @@ window.ARCHILOFT_AD_DATA = {
           ? `
             <tr>
               <td>${row.source}</td>
-              <td>${number(row.deals)}</td>
+              <td>${hasField(row, "leads") ? number(row.leads) : number(row.deals)}</td>
               <td>${number(row.inWork)}</td>
               <td>${number(row.closed)}</td>
               <td>${number(row.realized)}</td>
               <td>${money(row.budget)}</td>
+              <td>${displayMoney(row, "actualRevenue")}</td>
             </tr>
           `
           : `
@@ -2076,8 +2512,8 @@ window.ARCHILOFT_AD_DATA = {
               <td>${row.week}</td>
               <td>${row.source}</td>
               <td>${number(row.leads)}</td>
-              <td>${number(row.deals)}</td>
-              <td>${money(row.spend)}</td>
+              <td>${money(row.budget)}</td>
+              <td>${money(row.actualRevenue)}</td>
             </tr>
           `
       )
